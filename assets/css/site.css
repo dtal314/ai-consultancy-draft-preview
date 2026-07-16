@@ -2,12 +2,21 @@
    [CONSULTANCY NAME — Dan to confirm]
    Design system.
 
-   Palette is the practice's own CLARB Annual Meeting 2026 keynote deck,
-   sampled from the slides: cream ground, deep teal, deck orange, olive.
-   The four hues are the deck's workflow legend — human-led, AI-assisted,
-   automated, required human checkpoint — so colour carries the same meaning
-   here as it does on stage. Orange means "a person must be here", including
-   on buttons. The renderings carry the saturation; the interface is the frame.
+   Palette: RUSTIC ELEGANCE (supplied by Dan).
+     #28222C  #4A3F40  #8A4F55  #E4A390  #D49C68
+
+   All five swatches are mid-to-dark, so the set contains no ground colour.
+   --ground/--lifted/--sunk are derived warm near-whites tinted toward the
+   family rather than a neutral grey, which would fight the salmon and tan.
+   Likewise #E4A390 and #D49C68 are far too light to carry small text on a
+   light ground, so each has a darkened text-safe sibling; the raw swatch is
+   kept for fills and for text on dark panels. Nothing here is guessed — every
+   derived value is verified against WCAG AA in both themes.
+
+   The four workflow-legend states (human-led / AI-assisted / automated /
+   required human checkpoint) are preserved from the CLARB deck and remapped
+   onto this palette. Maroon means "a person must be here" — including on
+   buttons. That scarcity is the point; don't spend it on decoration.
    ========================================================================= */
 
 :root {
@@ -23,62 +32,55 @@
      checkpoint and for action; that scarcity is the entire point.
      --------------------------------------------------------------------- */
 
-  /* Ground — the deck's cream, never pure white */
-  --ground:    #F1EBE1;
-  --lifted:    #F9F7F2;
-  --sunk:      #E5DED0;
-  --ink:       #1C1F1E;
-  --ink-soft:  #454B49;
-  /* Carries the 11–12px uppercase eyebrows, so it must clear 4.5:1 on --ground. */
-  --ink-mute:  #5C5F55;
-  --rule:      #B8AD99;
-  --rule-soft: #D8CCB7;
+  /* Ground — derived warm near-white; the palette supplies no light value */
+  --ground:    #F5F0EC;
+  --lifted:    #FBF8F6;
+  --sunk:      #E9DDD6;
+  --ink:       #28222C;   /* palette */
+  --ink-soft:  #4A3F40;   /* palette */
+  --ink-mute:  #6A5B5C;   /* derived — must clear 4.5:1 on --ground at 11.8px */
+  --rule:      #C6B3AD;
+  --rule-soft: #E2D5CF;
 
-  /* Action + the required-human-checkpoint colour. One colour, one meaning:
-     orange is where a person must intervene — including to click. */
-  --accent:      #C0530A;   /* deck orange #F17113, darkened for text contrast */
-  --accent-deep: #97400A;
-  --accent-lift: #F17113;   /* the deck's exact orange — fills and large marks */
+  /* Action + the required-human-checkpoint colour. One colour, one meaning. */
+  --accent:      #8A4F55;   /* palette */
+  --accent-deep: #6B3A40;   /* derived — hover / small text */
+  --accent-lift: #E4A390;   /* palette — fills, and text on dark panels */
   --on-accent:   #FFFFFF;
 
-  /* The workflow legend, straight from the deck. */
-  --human:      #074840;   /* human-led — deep teal */
-  --human-lift: #187870;
-  --human-deep: #05332E;
-  --on-human:   #F1EBE1;   /* text on a --human fill */
-  --assisted:   #FFFFFF;   /* AI-assisted — white, teal outline */
-  --automated:  #6E7040;   /* automated — deck olive #A8A86D, darkened for text */
-  --automated-lift: #A8A86D;
-  --checkpoint: #C0530A;   /* required human checkpoint — orange */
-  --checkpoint-lift: #F17113;
+  /* The workflow legend, remapped onto this palette. */
+  --human:      #4A3F40;   /* human-led */
+  --human-lift: #6E5F60;
+  --human-deep: #28222C;
+  --on-human:   #F5F0EC;
+  --assisted:   #FFFFFF;   /* AI-assisted — white, outlined */
+  --automated:  #8A5F2C;   /* derived from #D49C68 — text-safe on light */
+  --automated-lift: #D49C68;   /* palette — fills */
+  --checkpoint: #8A4F55;   /* required human checkpoint */
+  --checkpoint-lift: #B36A70;
 
-  /* Engagement-stage hues map onto the legend rather than inventing a
-     second colour language. */
-  --moss:       #074840;   /* Understand — human-led teal */
-  --moss-lift:  #187870;
-  --ochre:      #6E7040;   /* Adopt — olive */
-  --ochre-lift: #A8A86D;
-  --clay:       #C0530A;   /* Build — orange */
-  --clay-lift:  #F17113;
-  --slate:      #2D8A7F;   /* technical / data — teal light */
-  --slate-lift: #2D8A7F;
+  /* Engagement stages ride the legend rather than a second colour language. */
+  --moss:       #4A3F40;   /* Understand */
+  --moss-lift:  #6E5F60;
+  --ochre:      #8A5F2C;   /* Adopt */
+  --ochre-lift: #D49C68;
+  --clay:       #8A4F55;   /* Build */
+  --clay-lift:  #B36A70;
+  --slate:      #4A3F40;
+  --slate-lift: #6E5F60;
 
-  /* Inverse panels — the deck's deep-teal blocks. These stay dark in BOTH
-     themes on purpose (they are the emphasis device, not a surface), so they
-     get their own fixed tokens rather than reading --human, which inverts in
-     dark mode and would put light text on light teal.
-     Tag/accent are lightened specifically to clear 4.5:1 on the panel. */
-  --panel:            #074840;
-  --on-panel:         #F1EBE1;
-  --on-panel-soft:    #CFE0DB;
-  --on-panel-tag:     #C9C994;   /* olive, lightened from #A8A86D (4.22 → pass) */
-  --on-panel-accent:  #FF9E5C;   /* orange, lightened from #F17113 (3.54 → pass) */
-  --on-panel-rule:    rgba(241,235,225,.22);
+  /* Inverse panels — dark in BOTH themes on purpose (emphasis, not surface). */
+  --panel:            #28222C;
+  --on-panel:         #F5F0EC;
+  --on-panel-soft:    #D9CBC6;
+  --on-panel-tag:     #E4A390;   /* palette — light on dark */
+  --on-panel-accent:  #D49C68;   /* palette — light on dark */
+  --on-panel-rule:    rgba(245,240,236,.22);
 
   /* Placeholder chips — solid values so contrast is verifiable in both themes */
-  --ph-ink:  #5C3020;
-  --ph-bg:   #F3E4DC;
-  --ph-line: #C08A70;
+  --ph-ink:  #6B3A40;
+  --ph-bg:   #F7E6E1;
+  --ph-line: #C79A93;
 
   /* Type */
   --display: "Newsreader", Georgia, "Times New Roman", serif;
@@ -100,87 +102,98 @@
    visitor gets when they have not chosen a theme. Keep the two in sync. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ground:    #14100E;
-    --lifted:    #1E1B18;
-    --sunk:      #0C0A08;
-    --ink:       #F1EBE1;
-    --ink-soft:  #BDB6A8;
-    --ink-mute:  #948E82;
-    --rule:      #3A362F;
-    --rule-soft: #2A2721;
-    --accent:      #F17113;
-    --accent-deep: #FF9040;
-    --accent-lift: #F17113;
-    --on-accent:   #14100E;
+    --ground:    #1B161E;
+    --lifted:    #28222C;
+    --sunk:      #120E15;
+    --ink:       #F5F0EC;
+    --ink-soft:  #CFC0BC;
+    --ink-mute:  #9C8C8D;
+    --rule:      #45393E;
+    --rule-soft: #332A30;
+    --accent:      #E4A390;
+    --accent-deep: #F2BFAF;
+    --accent-lift: #E4A390;
+    --on-accent:   #28222C;
 
-    --human:      #4FB3A5;
-    --human-lift: #7FD0C3;
-    --human-deep: #2D8A7F;
-    --on-human:   #06231F;
-    --panel:      #0A5C52;
-    --assisted:   #F1EBE1;
-    --automated:  #A8A86D;
-    --automated-lift: #C4C48E;
-    --checkpoint: #F17113;
-    --checkpoint-lift: #FF9040;
+    --human:      #C9B6B8;
+    --human-lift: #E0D2D3;
+    --human-deep: #8A7A7C;
+    --on-human:   #1B161E;
+    --assisted:   #F5F0EC;
+    --automated:  #D49C68;
+    --automated-lift: #E4B98E;
+    --checkpoint: #E4A390;
+    --checkpoint-lift: #F2BFAF;
 
-    --moss:       #2D8A7F;
-    --moss-lift:  #4FB3A5;
-    --ochre:      #A8A86D;
-    --ochre-lift: #C4C48E;
-    --clay:       #F17113;
-    --clay-lift:  #FF9040;
-    --slate:      #4FB3A5;
-    --slate-lift: #4FB3A5;
+    --moss:       #C9B6B8;
+    --moss-lift:  #E0D2D3;
+    --ochre:      #D49C68;
+    --ochre-lift: #E4B98E;
+    --clay:       #E4A390;
+    --clay-lift:  #F2BFAF;
+    --slate:      #C9B6B8;
+    --slate-lift: #E0D2D3;
 
-    --on-panel-accent: #FFB98A;  /* panel lifts to #0A5C52 in dark; #FF9E5C fell to 3.86 there */
-    --on-panel-tag:    #D6D6A4;
-    --ph-ink:  #F5C79A;
-    --ph-bg:   #2E1E10;
-    --ph-line: #8A5C2E;
+    /* Panel lifts off the near-black ground so it still reads as a panel. */
+    --panel:            #3A303F;
+    --on-panel:         #F5F0EC;
+    --on-panel-soft:    #D9CBC6;
+    --on-panel-tag:     #E4A390;
+    --on-panel-accent:  #E4B98E;
+    --on-panel-rule:    rgba(245,240,236,.22);
+
+    --ph-ink:  #F0C4AC;
+    --ph-bg:   #3A2A24;
+    --ph-line: #8A5C46;
   }
 }
 
 :root[data-theme="dark"] {
-  /* Dark = the deck's own dark ground: the near-black band and deep teal. */
-  --ground:    #14100E;
-  --lifted:    #1E1B18;
-  --sunk:      #0C0A08;
-  --ink:       #F1EBE1;
-  --ink-soft:  #BDB6A8;
-  --ink-mute:  #948E82;
-  --rule:      #3A362F;
-  --rule-soft: #2A2721;
-  --accent:      #F17113;
-  --accent-deep: #FF9040;
-  --accent-lift: #F17113;
-  --on-accent:   #14100E;
+  /* Dark = the palette's own near-black, #28222C pushed one step darker
+     so panels and surfaces still separate from the ground. */
+  --ground:    #1B161E;
+  --lifted:    #28222C;
+  --sunk:      #120E15;
+  --ink:       #F5F0EC;
+  --ink-soft:  #CFC0BC;
+  --ink-mute:  #9C8C8D;
+  --rule:      #45393E;
+  --rule-soft: #332A30;
+  --accent:      #E4A390;
+  --accent-deep: #F2BFAF;
+  --accent-lift: #E4A390;
+  --on-accent:   #28222C;
 
-  --human:      #4FB3A5;
-  --human-lift: #7FD0C3;
-  --human-deep: #2D8A7F;
-  --on-human:   #06231F;
-  --panel:      #0A5C52;
-  --assisted:   #F1EBE1;
-  --automated:  #A8A86D;
-  --automated-lift: #C4C48E;
-  --checkpoint: #F17113;
-  --checkpoint-lift: #FF9040;
+  --human:      #C9B6B8;
+  --human-lift: #E0D2D3;
+  --human-deep: #8A7A7C;
+  --on-human:   #1B161E;
+  --assisted:   #F5F0EC;
+  --automated:  #D49C68;
+  --automated-lift: #E4B98E;
+  --checkpoint: #E4A390;
+  --checkpoint-lift: #F2BFAF;
 
-  --moss:       #2D8A7F;
-  --moss-lift:  #4FB3A5;
-  --ochre:      #A8A86D;
-  --ochre-lift: #C4C48E;
-  --clay:       #F17113;
-  --clay-lift:  #FF9040;
-  --slate:      #4FB3A5;
-  --slate-lift: #4FB3A5;
+  --moss:       #C9B6B8;
+  --moss-lift:  #E0D2D3;
+  --ochre:      #D49C68;
+  --ochre-lift: #E4B98E;
+  --clay:       #E4A390;
+  --clay-lift:  #F2BFAF;
+  --slate:      #C9B6B8;
+  --slate-lift: #E0D2D3;
 
-  --on-panel-accent: #FFB98A;  /* panel lifts to #0A5C52 in dark; #FF9E5C fell to 3.86 there */
-  --on-panel-tag:  #D6D6A4;
-  --ph-ink:  #F5C79A;
-  --ph-bg:   #2E1E10;
-  --ph-line: #8A5C2E;
+  /* Panel lifts off the near-black ground so it still reads as a panel. */
+  --panel:            #3A303F;
+  --on-panel:         #F5F0EC;
+  --on-panel-soft:    #D9CBC6;
+  --on-panel-tag:     #E4A390;
+  --on-panel-accent:  #E4B98E;
+  --on-panel-rule:    rgba(245,240,236,.22);
+
+  --ph-ink:  #F0C4AC;
+  --ph-bg:   #3A2A24;
+  --ph-line: #8A5C46;
 }
 
 /* ---------------------------------------------------------------- reset */
@@ -462,8 +475,8 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 
 /* --------------------------------------------------------- draft flag */
 .draftbar {
-  background: var(--accent-lift);
-  color: #241000;
+  background: var(--automated-lift);
+  color: #2E1C08;
   font-family: var(--sans);
   font-size: .82rem;
   font-weight: 600;
@@ -523,9 +536,9 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   opacity: .85; margin-top: 3px;
 }
 .flow__step--human      { background: var(--human); color: var(--on-human); }
-.flow__step--assisted   { background: #FFFFFF; color: #074840; border-color: var(--human); }
-.flow__step--automated  { background: var(--automated-lift); color: #24240E; }
-.flow__step--checkpoint { background: var(--checkpoint-lift); color: #241000; font-weight: 600; }
+.flow__step--assisted   { background: #FFFFFF; color: #28222C; border-color: var(--human); }
+.flow__step--automated  { background: var(--automated-lift); color: #2E1C08; }
+.flow__step--checkpoint { background: var(--checkpoint); color: var(--on-accent); font-weight: 600; }
 .flow__arrow {
   align-self: center; color: var(--ink-mute); flex: none;
   font-size: 1.1rem; line-height: 1;
@@ -587,7 +600,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 /* Weight climbs with consequence — the ladder should LOOK heavier at the bottom. */
 .rung:nth-child(2) .rung__what { border-color: var(--human-lift); border-width: 1.5px; }
 .rung:nth-child(3) .rung__what { border-color: var(--human); border-width: 2px; }
-.rung:nth-child(4) .rung__what { background: var(--automated-lift); border-color: var(--automated); color: #24240E; }
+.rung:nth-child(4) .rung__what { background: var(--automated-lift); border-color: var(--automated); color: #2E1C08; }
 .rung:nth-child(5) .rung__what { background: var(--panel); border-color: var(--panel); color: var(--on-panel); }
 .rung:nth-child(5) .rung__review { color: var(--accent-deep); font-weight: 600; }
 @media (max-width: 760px) {
@@ -636,7 +649,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 @media (max-width: 820px) { .annot { grid-template-columns: 1fr; } }
 .sim-tag {
   display: inline-block;
-  background: var(--checkpoint-lift); color: #241000;
+  background: var(--checkpoint); color: var(--on-accent);
   font-size: .72rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase;
   padding: 5px 12px; border-radius: 3px;
@@ -654,7 +667,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   display: flex; align-items: center; justify-content: space-between;
   gap: var(--s3);
   background: var(--automated-lift);
-  color: #24240E;
+  color: #2E1C08;
   padding: 7px 10px;
   border-radius: 3px;
   margin-top: var(--s2);
@@ -662,7 +675,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 .spec__num {
   flex: none;
   width: 20px; height: 20px; border-radius: 50%;
-  background: var(--checkpoint-lift); color: #fff;
+  background: var(--checkpoint); color: var(--on-accent);
   font-family: var(--sans); font-size: .7rem; font-weight: 700;
   display: grid; place-items: center;
 }
@@ -670,7 +683,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 .faults li { display: grid; grid-template-columns: 22px 1fr; gap: var(--s3); font-size: .95rem; }
 .faults .n {
   width: 20px; height: 20px; border-radius: 50%;
-  background: var(--checkpoint-lift); color: #fff;
+  background: var(--checkpoint); color: var(--on-accent);
   font-size: .7rem; font-weight: 700;
   display: grid; place-items: center; margin-top: 2px;
 }
@@ -712,7 +725,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 .bg-deep p { color: var(--on-panel-soft); }
 .bg-deep .dim { color: var(--on-panel-tag); }
 .bg-deep .rule-top { border-color: var(--on-panel-rule); }
-.bg-deep a.link-quiet { color: var(--on-panel-accent); border-bottom-color: rgba(255,158,92,.5); }
+.bg-deep a.link-quiet { color: var(--on-panel-accent); border-bottom-color: rgba(212,156,104,.5); }
 /* Cards inside an inverse panel must invert too. */
 .bg-deep .card { background: rgba(241,235,225,.07); border-color: var(--on-panel-rule); color: var(--on-panel); }
 .bg-deep .list-tick li { color: var(--on-panel-soft); }
@@ -788,9 +801,9 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 }
 .hero--image h1 { color: #FFFFFF; max-width: 19ch; }
 .hero--image .lead { color: #E6DCCB; max-width: 56ch; }
-/* Sits highest in the text block, where the scrim is thinnest. Mid-luminance
-   olive (#A8A86D) only reached 3.96:1 there — same olive family, lifted. */
-.hero--image .eyebrow { color: #D6D6A4; }
+/* Sits highest in the text block, where the scrim is thinnest, so it needs a
+   high-luminance value from the family — the mid-tones fail there. */
+.hero--image .eyebrow { color: #E4A390; }
 .hero--image .hero__meta { border-top-color: rgba(244,239,228,.28); color: #D6CBB8; }
 .hero--image .btn--ghost { border-color: rgba(244,239,228,.5); color: #F4EFE4; }
 .hero--image .btn--ghost:hover { border-color: #fff; color: #fff; }
