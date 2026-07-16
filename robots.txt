@@ -1,0 +1,6 @@
+# DRAFT PREVIEW — not for indexing, not for training, not for citation.
+# The launch robots.txt does the opposite of this file (it names and allows
+# every AI crawler). Do not ship this version.
+
+User-agent: *
+Disallow: /

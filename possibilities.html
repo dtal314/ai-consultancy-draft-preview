@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Model the value of one better workflow — AI ROI calculator for AEC firms</title>
+<meta name="description" content="A free, ungated calculator that models the hours and capacity value of applying AI to one specific, repeatable workflow in your firm. Uses your own observed numbers. No benchmarks assumed.">
+<link rel="canonical" href="https://[FINAL-DOMAIN-DAN-TO-PROVIDE]/possibilities">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=20260716a">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://[FINAL-DOMAIN-DAN-TO-PROVIDE]/possibilities#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you calculate the ROI of AI in an architecture or engineering firm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start from one specific repeatable workflow rather than the whole firm. Multiply the people performing it by their hours per week and working weeks per year to get baseline annual hours. Apply the share of that workflow you actually complete with AI, and the measured time reduction on the assisted work, to get hours reclaimed. Multiply by a fully loaded hourly cost for capacity value, then subtract one-time implementation and twelve months of recurring AI cost. Capacity value is not booked revenue or cash savings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a fully loaded hourly cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A finance-approved internal cost per hour for a person, including salary, benefits, taxes and overhead. It is not the billing rate charged to a client. Using a billing rate inflates the modelled value."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a standard productivity benchmark for AI in AEC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No universal AEC productivity benchmark is assumed here. Any percentage used should come from a measured pilot in your own firm, compared like for like, including the time spent prompting, checking and reworking output."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div style="background:#5C3020;color:#F3E4DC;font:500 13px/1.5 Inter,Arial,sans-serif;padding:10px 20px;text-align:center;letter-spacing:.02em">DRAFT PREVIEW — unpublished work in progress. Not for circulation. Bracketed items are unresolved placeholders.</div>
+
+<header class="site-header">
+  <div class="shell site-header__in">
+    <a class="wordmark" href="index.html">[CONSULTANCY NAME<span>*</span>]</a>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="results.html">The Results</a>
+      <a href="possibilities.html" aria-current="page">See What's Possible</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☀</button>
+      <button class="icon-btn nav-toggle" data-nav-toggle type="button"
+              aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" style="padding-bottom:var(--s6)">
+    <div class="shell shell--narrow">
+      <span class="eyebrow">See what's possible</span>
+      <h1>Model the value of one better workflow.</h1>
+      <p class="lead" style="margin-top:var(--s5)">Choose one specific, repeatable workflow. Use your
+      firm's own observed inputs. This model assumes no universal AEC productivity benchmark — every
+      number below is yours, and it starts blank on purpose.</p>
+      <p class="dim" style="font-size:.9rem">Free. No email required. Nothing is sent anywhere — the
+      math runs in your browser.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="shell shell--narrow">
+      <form class="calc" id="calc" novalidate>
+
+        <!-- ------------------------------------------------ baseline -->
+        <div class="calc__group">
+          <span class="eyebrow">Your workflow today</span>
+          <p class="calc__group-note">Conservative numbers are better than precise ones. The goal is
+          to see the size of the opportunity, not to forecast it.</p>
+
+          <div class="field">
+            <label for="c-name">Workflow name</label>
+            <input type="text" id="c-name" placeholder="e.g. rendering post-processing">
+            <p class="field__help">Name one repeatable workflow. Demonstrated examples include
+            material palette boards, segmentation, rendering post-processing, photomatching, and a
+            custom SketchUp workflow. Not used in the math.</p>
+          </div>
+
+          <div class="field">
+            <label for="c-people">People performing it (P)</label>
+            <input type="number" id="c-people" min="1" step="1" inputmode="numeric">
+            <p class="field__help">Count the actual participants, not firm headcount. No industry
+            benchmark is assumed.</p>
+            <p class="field__err" id="c-people-err" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="c-hours">Current hours per person, per week (H)</label>
+            <input type="number" id="c-hours" min="0" step="0.5" inputmode="decimal">
+            <p class="field__help">Use timesheets, a time study, or a conservative two-week sample.
+            Include setup, review, corrections and rework — not just the productive part.</p>
+            <p class="field__err" id="c-hours-err" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="c-weeks">Working weeks per year (W)</label>
+            <input type="number" id="c-weeks" min="1" max="52" step="1" inputmode="numeric">
+            <p class="field__help">Use your firm's approved assumption after leave and
+            non-production time. No default is supplied.</p>
+            <p class="field__err" id="c-weeks-err" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="c-cost">Fully loaded hourly cost (C) — optional</label>
+            <div class="input-affix">
+              <span>$</span>
+              <input type="number" id="c-cost" min="0" step="1" inputmode="decimal">
+            </div>
+            <p class="field__help">Use a finance-approved loaded labour cost, not a billing rate. If
+            you don't know it, leave this blank — you'll still see hours, but no financial value.
+            <span class="ph">Currency — Dan to confirm</span></p>
+            <p class="field__err" id="c-cost-err" role="alert"></p>
+          </div>
+        </div>
+
+        <!-- ------------------------------------------------ scenario -->
+        <div class="calc__group">
+          <span class="eyebrow">Your AI scenario</span>
+          <p class="calc__group-note">Costs are not prefilled. Pricing for this practice is not set,
+          and token costs vary by model and task — use a quote, an invoice, or a measured pilot.</p>
+
+          <div class="field">
+            <label for="c-impl">One-time implementation and training cost (I)</label>
+            <div class="input-affix">
+              <span>$</span>
+              <input type="number" id="c-impl" min="0" step="1" inputmode="decimal">
+            </div>
+            <p class="field__help">Include discovery, build and configuration, testing, training,
+            and change management.</p>
+            <p class="field__err" id="c-impl-err" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="c-monthly">Recurring monthly AI cost (M)</label>
+            <div class="input-affix">
+              <span>$</span>
+              <input type="number" id="c-monthly" min="0" step="1" inputmode="decimal">
+            </div>
+            <p class="field__help">Include subscriptions, tokens and API spend, hosting, and
+            support. Token cost varies by model and by task difficulty.</p>
+            <p class="field__err" id="c-monthly-err" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="c-retired">Verified annual direct cost retired (A) — optional</label>
+            <div class="input-affix">
+              <span>$</span>
+              <input type="number" id="c-retired" min="0" step="1" inputmode="decimal">
+            </div>
+            <p class="field__help">Only spend that will actually stop — a licence you will genuinely
+            cancel. Exclude possible savings and any labour already counted above. Blank means zero.</p>
+            <p class="field__err" id="c-retired-err" role="alert"></p>
+          </div>
+        </div>
+
+        <!-- -------------------------------------------------- levers -->
+        <div class="calc__group">
+          <span class="eyebrow">Move the levers</span>
+          <p class="calc__group-note">Both start at zero. These are your controls, not our
+          benchmarks — the honest way to set them is a measured pilot.</p>
+
+          <div class="lever">
+            <div class="lever__head">
+              <label for="c-uptake">Share of the eligible workflow completed with AI (U)</label>
+              <span class="lever__val" id="c-uptake-val">0%</span>
+            </div>
+            <input type="range" id="c-uptake" min="0" max="100" step="1" value="0"
+                   aria-describedby="c-uptake-help">
+            <div class="ticks"><span>0%</span><span>50%</span><span>100%</span></div>
+            <p class="field__help" id="c-uptake-help">How much of this workflow AI actually touches.
+            User-controlled coverage, not a benchmark. The tick marks are interface positions, not
+            recommended values.</p>
+          </div>
+
+          <div class="lever">
+            <div class="lever__head">
+              <label for="c-reduction">Measured time reduction on AI-assisted work (R)</label>
+              <span class="lever__val" id="c-reduction-val">0%</span>
+            </div>
+            <input type="range" id="c-reduction" min="0" max="100" step="1" value="0"
+                   aria-describedby="c-reduction-help">
+            <div class="ticks"><span>0%</span><span>50%</span><span>100%</span></div>
+            <p class="field__help" id="c-reduction-help">Compare like for like, and include the time
+            spent prompting, checking and reworking. No universal AEC percentage is supplied here
+            because none is credible.</p>
+          </div>
+        </div>
+
+        <!-- -------------------------------------------------- impact -->
+        <div class="impact">
+          <span class="eyebrow">The impact</span>
+          <div class="impact__grid" aria-live="polite">
+            <div>
+              <span class="impact__cap">Potential hours reclaimed / year</span>
+              <span class="impact__val" id="out-hours" data-empty="true">—</span>
+            </div>
+            <div>
+              <span class="impact__cap">Potential annual capacity value</span>
+              <span class="impact__val" id="out-value" data-empty="true">—</span>
+              <p class="impact__note" id="out-value-note">Enter people, hours and working weeks.</p>
+            </div>
+            <div>
+              <span class="impact__cap">First-year modelled ROI</span>
+              <span class="impact__val" id="out-roi" data-empty="true">—</span>
+              <p class="impact__note" id="out-roi-note"></p>
+            </div>
+          </div>
+
+          <details class="math">
+            <summary>Show the math</summary>
+            <div class="math__body" id="out-math">Enter your workflow values to see the substituted formulas.</div>
+          </details>
+
+          <p class="disclaimer">
+            Illustrative scenario only — not a quote, forecast, promise, or guarantee. Results use
+            only the values and assumptions you enter. “Capacity value” is not the same as booked
+            revenue or cash savings. Actual outcomes depend on workflow fit, adoption, quality
+            control, model and token costs, security and privacy controls, copyright and
+            professional-liability review, and how reclaimed time is used. AI does not replace
+            professional liability risk. Validate the scenario with a measured pilot and your firm's
+            finance, IT/security, and legal advisers.
+          </p>
+
+          <div class="cta-row" style="margin-top:var(--s5)">
+            <button class="btn btn--ghost btn--sm" type="button" id="c-reset">Reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- videos -->
+  <section class="rule-top" id="see-it-done">
+    <div class="shell">
+      <span class="eyebrow">See it done</span>
+      <h2>The work, at length, unedited.</h2>
+      <p class="lead" style="margin-top:var(--s4); margin-bottom:var(--s6)">Recorded sessions and
+      conference presentations. Not trailers — the actual walkthroughs, including the parts where
+      the tools have to be argued with.</p>
+
+      <div class="grid grid--3">
+
+        <figure>
+          <div class="video" data-video="XfX8tMhhRlc">
+            <button class="video__poster" type="button"
+                    aria-label="Play: AI Post Process Rendering for Everyone — Daniel and Jenn">
+              <img src="https://i.ytimg.com/vi/XfX8tMhhRlc/hqdefault.jpg" loading="lazy"
+                   alt="Title frame of the AI post-process rendering session with Daniel Tal and Jenn Becker.">
+              <span class="video__play" aria-hidden="true"></span>
+              <span class="video__label">AI Post Process Rendering for Everyone</span>
+            </button>
+          </div>
+          <figcaption><strong>Daniel and Jenn · 8 July 2026.</strong> Post-processing renderings with
+          AI — the workflow behind R[APP] and NOVA.</figcaption>
+        </figure>
+
+        <figure>
+          <div class="video" data-video="urztoUfGD0w">
+            <button class="video__poster" type="button"
+                    aria-label="Play: Remote Sensing and Ai — ASLA Expo 2025">
+              <img src="https://i.ytimg.com/vi/urztoUfGD0w/hqdefault.jpg" loading="lazy"
+                   alt="Title frame of the Remote Sensing and AI presentation from ASLA Expo 2025.">
+              <span class="video__play" aria-hidden="true"></span>
+              <span class="video__label">Remote Sensing and Ai</span>
+            </button>
+          </div>
+          <figcaption><strong>ASLA Expo 2025.</strong> Drone and remote-sensing work — one of the
+          three backgrounds AI leadership tends to come from.</figcaption>
+        </figure>
+
+        <figure>
+          <div class="video" data-video="5xpo9MUGU8g">
+            <button class="video__poster" type="button"
+                    aria-label="Play: ASLA 2025 Emergent Ai">
+              <img src="https://i.ytimg.com/vi/5xpo9MUGU8g/hqdefault.jpg" loading="lazy"
+                   alt="Title frame of the Emergent AI presentation from ASLA 2025.">
+              <span class="video__play" aria-hidden="true"></span>
+              <span class="video__label">Emergent Ai</span>
+            </button>
+          </div>
+          <figcaption><strong>ASLA 2025.</strong> Where the tools were, where they were going, and
+          what held up under practice.</figcaption>
+        </figure>
+
+      </div>
+      <p class="dim" style="font-size:.85rem; margin-top:var(--s5)">Videos load only when you press
+      play — nothing is requested from YouTube before that.
+      <span class="ph">More sessions — Dan to add</span></p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------- what moves the numbers -->
+  <section class="bg-lifted rule-top">
+    <div class="shell">
+      <span class="eyebrow">What moves these numbers in practice</span>
+      <h2>The levers are not settings. They're decisions.</h2>
+      <p class="lead" style="margin-top:var(--s4); margin-bottom:var(--s6)">Each of these sits on the
+      Understand → Adopt → Build spine, and each one is where a modelled number either becomes real
+      or quietly doesn't.</p>
+
+      <div class="grid grid--2">
+        <article class="card">
+          <span class="eyebrow eyebrow--accent">Understand</span>
+          <h3>Choose the problem before the bot</h3>
+          <p>Most AI disappointment starts with a tool looking for a job. Baseline one workflow
+          first — what it costs now, who touches it, where it stalls — and settle policy, security,
+          liability, training and ROI ownership before anything is adopted.</p>
+          <p class="mb-0 dim">If you can't baseline it, you can't model it.</p>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow eyebrow--accent">Adopt</span>
+          <h3>Train people who can carry it</h3>
+          <p>General AI literacy across the firm, deeper role-specific literacy where the work
+          actually happens, and named AiT champions who organize and keep track of use. Adoption is
+          staged as the firm ramps, not announced.</p>
+          <p class="mb-0 dim">The uptake lever is a people number, not a software number.</p>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow eyebrow--accent">Adopt</span>
+          <h3>Validate output, not only speed</h3>
+          <p>Measure review and rework, not just generation time — a fast wrong answer is a slower
+          workflow. Human quality control stays. So do security, copyright, ethics, and professional
+          liability review.</p>
+          <p class="mb-0 dim">Time reduction that skips checking isn't time reduction.</p>
+        </article>
+
+        <article class="card">
+          <span class="eyebrow eyebrow--accent">Build</span>
+          <h3>Build to your standards</h3>
+          <p>Once a bottleneck is defined and measured, targeted apps, agents and POWER tools can be
+          built around your own standards, your data, and your hard-won lessons — rather than
+          bending your process to fit someone else's idea of how you should work.</p>
+          <p class="mb-0 dim">Build for a bottleneck you measured. Never for a demo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------- economics -->
+  <section class="rule-top">
+    <div class="shell shell--narrow">
+      <span class="eyebrow">Why the numbers keep moving</span>
+      <h2>The cost floor under all of this is not stable.</h2>
+      <p style="margin-top:var(--s4)">Any model you build today sits on top of economics that are
+      still shifting. That is an argument for measuring your own pilot rather than trusting a
+      benchmark — including ours.</p>
+
+      <ul class="list-plain" style="margin-top:var(--s5)">
+        <li><strong>Tokens are the unit.</strong> Tokens are units of data processed by AI models to
+        generate outputs; each task consumes a share of them. Larger models and harder tasks cost
+        more, cost varies by model, and rising cost has already changed when and how people use
+        these tools. <span class="ph">Source — Dan to provide</span></li>
+        <li><strong>Hardware is moving under it.</strong> The deck reports chip efficiency up 150×
+        since 2023, and characterises the direction as 50× faster and 35× cheaper — pushing token
+        cost down, compute up, and latency down. <span class="ph">Source — Dan to provide</span></li>
+        <li><strong>The infrastructure is early.</strong> “Building AI infrastructure stage: similar
+        to the Internet from 1991–1998.” <span class="ph">Source — Dan to provide</span></li>
+        <li><strong>There is an environmental ledger.</strong> Data-center water use, “Data Center
+        Alley” carbon emissions, and energy projections are real considerations — and closed-loop
+        cooling cuts water consumption versus the evaporative systems used previously. For landscape
+        architects this is not a footnote. <span class="ph">Source — Dan to provide</span></li>
+      </ul>
+
+      <blockquote class="pull">
+        <p>Insourcing. Get comfortable with the word. With AI-assisted development, firms can
+        increasingly build targeted tools and workflows in-house — tuned to their own standards,
+        their own data, their own hard-won lessons. No more waiting eighteen months for a vendor to
+        half-implement a feature request. No more bending your process to fit someone else's idea of
+        how you should work.</p>
+        <cite>From the 2026 SketchUp Summit deck · <span class="ph">Source / URL — Dan to provide</span></cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- faq -->
+  <section class="faq rule-top">
+    <div class="shell">
+      <span class="eyebrow">Common questions</span>
+      <h2>About this model.</h2>
+      <div style="margin-top:var(--s6)">
+        <div class="faq__item">
+          <h3 class="faq__q">How do you calculate the ROI of AI in an architecture or engineering firm?</h3>
+          <p class="faq__a"><strong>Start from one specific repeatable workflow rather than the whole
+          firm.</strong> Multiply the people performing it by their hours per week and working weeks
+          per year to get baseline annual hours. Apply the share of that workflow you actually
+          complete with AI, and the measured time reduction on the assisted work, to get hours
+          reclaimed. Multiply by a fully loaded hourly cost for capacity value, then subtract
+          one-time implementation and twelve months of recurring AI cost. Capacity value is not
+          booked revenue or cash savings.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">What is a fully loaded hourly cost?</h3>
+          <p class="faq__a"><strong>A finance-approved internal cost per hour for a person,
+          including salary, benefits, taxes and overhead.</strong> It is not the billing rate charged
+          to a client. Using a billing rate is the most common way these models get inflated — it
+          prices the hour at what you sell it for rather than what it costs you.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">Is there a standard productivity benchmark for AI in AEC?</h3>
+          <p class="faq__a"><strong>No universal AEC productivity benchmark is assumed here.</strong>
+          Any percentage you use should come from a measured pilot in your own firm, compared like
+          for like, including the time spent prompting, checking and reworking output. That is why
+          both sliders start at zero and why no scenario on this page is labelled “conservative” or
+          “typical” — we have no credible basis for those labels, so we don't use them.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closer">
+    <div class="shell">
+      <h2>Model it, then go measure it.</h2>
+      <p class="lead">A number on this page is a hypothesis. The next step is a bounded pilot on the
+      workflow you just modelled.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn--primary" href="contact.html">Bring us the workflow</a>
+        <a class="btn btn--ghost" href="services.html">See how engagements work</a>
+      </div>
+      <p class="dim" style="font-size:.85rem; margin-top:var(--s4)"><span class="ph">Post-calculator CTA copy + destination — Dan to approve</span></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <a class="wordmark" href="index.html">[CONSULTANCY NAME<span>*</span>]</a>
+        <p class="footer__tag">Practitioners, not pundits.</p>
+        <p style="font-size:.88rem" class="dim"><span class="ph">Email — Dan to provide</span></p>
+      </div>
+      <div class="footer__col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="results.html">The Results</a></li>
+          <li><a href="possibilities.html">See What's Possible</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Ongoing Knowledge</h4>
+        <ul>
+          <li><a href="services.html#ongoing">Newsletters</a></li>
+          <li><a href="services.html#ongoing">Video training</a></li>
+          <li><a href="services.html#ongoing">Intel — State of the AI reports</a></li>
+          <li><a href="services.html#ongoing">Member sign-in</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>© <span class="ph">Year + legal entity — Dan to confirm</span></span>
+      <span><span class="ph">Privacy · Terms — Dan and counsel to provide</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js?v=20260716a"></script>
+</body>
+</html>
