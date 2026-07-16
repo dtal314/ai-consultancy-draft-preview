@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Responsible AI use in design practice — judgment, verification and licensure</title>
+<meta name="description" content="When is AI helpful, when is it dangerous, and how much review does the work actually need? A responsible-use framework for landscape architecture and AEC: the verification ladder, bounded autonomy, and why polished is not the same as correct.">
+<link rel="canonical" href="https://[FINAL-DOMAIN-DAN-TO-PROVIDE]/responsible-use">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css?v=20260716b">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://[FINAL-DOMAIN-DAN-TO-PROVIDE]/responsible-use#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When is AI helpful in design work, and when is it not?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on two things: the consequence of an error, and how easy the output is to verify. Low consequence and easy to verify — draft emails, meeting summaries, file renaming, formatting — is the best starting ground. High consequence but easy to verify, such as quantity takeoffs checked against the model or code lookups confirmed in the code itself, can be used with rigorous verification. Low consequence but hard to verify, like ideation imagery or precedent brainstorms, is useful if treated as suggestion. High consequence and hard to verify — grading and drainage decisions, structural or accessibility details, sealed documents — is least appropriate for uncritical use. The more consequential and difficult to verify the output, the less appropriate it is for uncritical AI use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI output look correct but be wrong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Polished is not the same as correct. AI-generated technical content can combine an incorrect dimension, missing information such as no edge restraint or joint spec, an invented standard whose cited number does not exist, and assumed site information the model cannot know — while still looking entirely professional. Constructability, materials, and site conditions still require a professional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an AI QA/QC checker catch AI mistakes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not reliably. A confident, polished AI output checked by an AI checker that confidently agrees still requires human professional review. The two systems can share assumptions, share training limitations, miss context, produce false positives and false negatives, and give confident explanations of wrong results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much review does AI-assisted work need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Match review to risk. Low-risk communication support needs basic human review. Internal option generation needs comparison and source checking. Client-facing material needs design-team review plus appropriate disclosure. Technical documentation needs qualified disciplinary review plus established QA/QC. Health, safety and welfare work, code, and sealed work need full professional judgment and jurisdiction-appropriate review. Review effort should climb the ladder with consequence, not with convenience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is bounded autonomy in an AI workflow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bounded autonomy is a multi-step workflow that runs inside explicit limits. It is the fourth stage after manual work where a human does the task, AI assistance where a human directs each step, and automation where defined tasks run on their own. Autonomous workflows earn their bounds through defined limits, checkpoints, logs, human approval, and a clear stop mechanism."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does AI make design firms look more alike?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It can. Shared inputs converge on shared outputs: the same models, same prompts, same image styles, same datasets, same defaults and same optimization goals produce homogenized imagery, generic language, repeated design solutions, reduced local specificity, and loss of firm identity. What still differentiates a firm is local knowledge, community relationships, design judgment, proprietary processes, customized tools, and a clear point of view."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div style="background:#5C3020;color:#F3E4DC;font:500 13px/1.5 Inter,Arial,sans-serif;padding:10px 20px;text-align:center;letter-spacing:.02em">DRAFT PREVIEW — unpublished work in progress. Not for circulation. Bracketed items are unresolved placeholders.</div>
+
+<div class="draftbar" role="status">
+  <strong>25% Draft</strong> —
+  <span>work in progress. Content, pricing and branding are unfinished; bracketed items are unresolved placeholders.</span>
+</div>
+
+<header class="site-header">
+  <div class="shell site-header__in">
+    <a class="wordmark" href="index.html">[CONSULTANCY NAME<span>*</span>]</a>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="responsible-use.html" aria-current="page">Responsible Use</a>
+      <a href="results.html">The Results</a>
+      <a href="possibilities.html">See What's Possible</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-tools">
+      <button class="icon-btn" data-theme-toggle type="button" aria-label="Toggle theme">☀</button>
+      <button class="icon-btn nav-toggle" data-nav-toggle type="button"
+              aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" style="padding-bottom:var(--s6)">
+    <div class="shell shell--narrow">
+      <span class="eyebrow">Responsible use</span>
+      <h1>The question is not whether AI will be used. It is how it will be used responsibly.</h1>
+      <p class="lead" style="margin-top:var(--s5)">Adoption is not a future event. It is already
+      underway — often informally. This page is the framework we use to decide what AI touches, how
+      much review the work earns, and who stays accountable for the result.</p>
+      <p class="dim" style="font-size:.9rem">Drawn from “AI in Design Practice and Education:
+      Opportunities, Risks, and Responsibilities” — CLARB Annual Meeting 2026 keynote, Jenn Becker.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------- already in the workflow -->
+  <section class="rule-top">
+    <div class="shell">
+      <span class="eyebrow">Where we are</span>
+      <h2>AI is already in the workflow.</h2>
+      <p class="lead" style="margin-top:var(--s4)">Not arriving. Already here — usually before anyone
+      decided it should be. These are the places it is already touching design work:</p>
+      <div class="grid grid--3" style="margin-top:var(--s5)">
+        <div class="card" style="padding:var(--s4)">Writing &amp; communication</div>
+        <div class="card" style="padding:var(--s4)">Research</div>
+        <div class="card" style="padding:var(--s4)">Visualization</div>
+        <div class="card" style="padding:var(--s4)">Modeling</div>
+        <div class="card" style="padding:var(--s4)">Rendering</div>
+        <div class="card" style="padding:var(--s4)">Coding</div>
+        <div class="card" style="padding:var(--s4)">Data organization</div>
+        <div class="card" style="padding:var(--s4)">Documentation</div>
+        <div class="card" style="padding:var(--s4)">Software automation</div>
+      </div>
+      <p style="margin-top:var(--s5); font-weight:500; color:var(--human)">
+        Adoption is not a future event. It is already underway — often informally.</p>
+      <p class="dim" style="font-size:.92rem">Which is the problem. Informal adoption means no policy,
+      no disclosure, no record of what was checked — and no named person accountable when something
+      polished turns out to be wrong.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------ when is AI helpful -->
+  <section class="bg-lifted rule-top">
+    <div class="shell">
+      <span class="eyebrow">Judgment</span>
+      <h2>When is AI helpful?</h2>
+      <p class="lead" style="margin-top:var(--s4)">Two questions decide it: what happens if this is
+      wrong, and how hard is it to tell whether it is wrong?</p>
+
+      <div class="matrix">
+        <div class="quad">
+          <span class="quad__tag">High consequence · easy to verify</span>
+          <p class="quad__ex">Quantity takeoffs checked against the model · code lookups confirmed in
+          the code itself</p>
+          <p class="quad__verdict">Use with rigorous verification</p>
+        </div>
+        <div class="quad quad--danger">
+          <span class="quad__tag">High consequence · hard to verify</span>
+          <p class="quad__ex">Grading &amp; drainage decisions · structural or accessibility details ·
+          sealed documents</p>
+          <p class="quad__verdict">Least appropriate for uncritical use</p>
+        </div>
+        <div class="quad">
+          <span class="quad__tag">Low consequence · easy to verify</span>
+          <p class="quad__ex">Draft emails · meeting summaries · file renaming · formatting</p>
+          <p class="quad__verdict">Best starting ground</p>
+        </div>
+        <div class="quad">
+          <span class="quad__tag">Low consequence · hard to verify</span>
+          <p class="quad__ex">Ideation imagery · precedent brainstorms · early narratives</p>
+          <p class="quad__verdict">Useful — treat as suggestion</p>
+        </div>
+      </div>
+      <p class="matrix__axis">Easy to verify → difficult to verify · consequence of error rises upward</p>
+
+      <p style="margin-top:var(--s5); font-weight:500; color:var(--human); max-width:70ch">
+        The more consequential and difficult to verify the output, the less appropriate it is for
+        uncritical AI use.</p>
+    </div>
+  </section>
+
+  <!-- -------------------------------------------------- hallucinations -->
+  <section class="rule-top">
+    <div class="shell">
+      <span class="eyebrow">Risk · convincing errors</span>
+      <h2>Hallucinations can look professional.</h2>
+      <p class="lead" style="margin-top:var(--s4); margin-bottom:var(--s6)">This is the failure mode
+      that matters in a licensed profession. Not obvious nonsense — plausible, well-formatted,
+      confident nonsense that passes a glance.</p>
+
+      <div class="annot">
+        <div>
+          <span class="sim-tag">Simulated example — “AI-generated paving detail”</span>
+          <div class="spec">
+            <div style="color:var(--ink-mute); margin-bottom:var(--s3)">UNIT PAVER ON AGGREGATE — SECTION</div>
+            <div class="spec__line"><span>PAVER — 2" THK</span><span class="spec__num">1</span></div>
+            <div class="spec__line"><span>BEDDING — "¾" SAND"</span><span class="spec__num">2</span></div>
+            <div class="spec__line"><span>BASE PER "ASTM D-9921" — DEPTH N/A</span><span class="spec__num">3</span></div>
+            <div class="spec__line"><span>SUBGRADE — "EXISTING SOIL, WELL-DRAINED"</span><span class="spec__num">4</span></div>
+          </div>
+          <p class="dim" style="font-size:.85rem; margin-top:var(--s3)">Simulated for illustration —
+          not a real detail from a real project.</p>
+        </div>
+        <div>
+          <ul class="faults">
+            <li><span class="n">1</span><span><strong>Incorrect dimension</strong> — thickness wrong
+            for the stated use</span></li>
+            <li><span class="n">2</span><span><strong>Missing information</strong> — no edge
+            restraint, no joint spec</span></li>
+            <li><span class="n">3</span><span><strong>Invented standard</strong> — the cited ASTM
+            number does not exist</span></li>
+            <li><span class="n">4</span><span><strong>Assumed site information</strong> — the AI
+            cannot know the soils</span></li>
+          </ul>
+          <p style="margin-top:var(--s5); font-weight:600; color:var(--human); border-top:1px solid var(--rule); padding-top:var(--s4)">
+            Polished ≠ correct. Constructability, materials, and site conditions still require a
+            professional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------ checking the checker -->
+  <section class="bg-deep">
+    <div class="shell">
+      <span class="eyebrow">Risk · checking the checker</span>
+      <h2>A QA/QC bot can also be wrong.</h2>
+      <p class="lead" style="margin-top:var(--s4)">The obvious fix — have AI check the AI — fails in a
+      specific and predictable way.</p>
+
+      <div class="flow">
+        <div class="flow__step flow__step--assisted">AI output<small>confident, polished</small></div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--assisted">AI checker<small>confidently agrees</small></div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--checkpoint">Human professional review<small>still required</small></div>
+      </div>
+
+      <div class="grid grid--3" style="margin-top:var(--s6)">
+        <div class="card" style="padding:var(--s4)">Shared assumptions</div>
+        <div class="card" style="padding:var(--s4)">Shared training limitations</div>
+        <div class="card" style="padding:var(--s4)">Missed context</div>
+        <div class="card" style="padding:var(--s4)">False positives</div>
+        <div class="card" style="padding:var(--s4)">False negatives</div>
+        <div class="card" style="padding:var(--s4)">Confident explanations of wrong results</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------- match review to risk -->
+  <section class="rule-top">
+    <div class="shell">
+      <span class="eyebrow">Verification ladder</span>
+      <h2>Match review to risk.</h2>
+      <p class="lead" style="margin-top:var(--s4)">Not everything needs a sealed review. But some
+      things need far more than they usually get.</p>
+
+      <div class="ladder">
+        <div class="rung">
+          <div class="rung__what">Low-risk communication support</div>
+          <span class="rung__arrow">→</span>
+          <div class="rung__review">basic human review</div>
+        </div>
+        <div class="rung">
+          <div class="rung__what">Internal option generation</div>
+          <span class="rung__arrow">→</span>
+          <div class="rung__review">comparison and source checking</div>
+        </div>
+        <div class="rung">
+          <div class="rung__what">Client-facing material</div>
+          <span class="rung__arrow">→</span>
+          <div class="rung__review">design-team review + appropriate disclosure</div>
+        </div>
+        <div class="rung">
+          <div class="rung__what">Technical documentation</div>
+          <span class="rung__arrow">→</span>
+          <div class="rung__review">qualified disciplinary review + established QA/QC</div>
+        </div>
+        <div class="rung">
+          <div class="rung__what">Health, safety, welfare · code · sealed work</div>
+          <span class="rung__arrow">→</span>
+          <div class="rung__review">full professional judgment + jurisdiction-appropriate review</div>
+        </div>
+      </div>
+
+      <p style="margin-top:var(--s5); font-weight:500; color:var(--accent-deep); max-width:70ch">
+        Review effort should climb the ladder with consequence — not with convenience.</p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------- bounded autonomy -->
+  <section class="bg-lifted rule-top">
+    <div class="shell">
+      <span class="eyebrow">Autonomy</span>
+      <h2>From automation to bounded autonomy.</h2>
+      <p class="lead" style="margin-top:var(--s4)">“Agentic” is not a single thing. It is a ladder,
+      and each rung hands over more control than the last.</p>
+
+      <div class="flow">
+        <div class="flow__step flow__step--assisted" style="background:var(--lifted); border-color:var(--rule)">
+          <span><strong>Manual work</strong><small>Human does the task</small></span>
+        </div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--assisted">
+          <span><strong>AI assistance</strong><small>Human directs each step</small></span>
+        </div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--automated">
+          <span><strong>Automation</strong><small>Defined tasks run on their own</small></span>
+        </div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--human">
+          <span><strong>Bounded autonomy</strong><small>Multi-step workflows inside explicit limits</small></span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:var(--s6); margin-bottom:var(--s4); font-size:1.2rem">
+        Autonomous workflows earn their bounds:</h3>
+      <ul class="list-tick" style="columns:2; column-gap:var(--s7); max-width:760px">
+        <li>Defined limits</li>
+        <li>Checkpoints</li>
+        <li>Logs</li>
+        <li>Human approval</li>
+        <li><strong style="color:var(--accent-deep)">A clear stop mechanism</strong></li>
+      </ul>
+      <p class="dim" style="margin-top:var(--s4); font-size:.92rem">The stop mechanism is the one
+      most often skipped, and the only one that matters at 2am.</p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------- connecting the workflow -->
+  <section class="rule-top">
+    <div class="shell">
+      <span class="eyebrow">3D &amp; visualization</span>
+      <h2>Connecting tools into a workflow.</h2>
+      <p class="lead" style="margin-top:var(--s4)">Isolated tools produce isolated results. The value
+      shows up when the steps connect — and when it is explicit who is in control at each one.</p>
+
+      <div class="flow">
+        <div class="flow__step flow__step--human">Project information</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--assisted">Model setup</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--automated">Geometry &amp; asset organization</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--assisted">Materials &amp; planting</div>
+      </div>
+      <div class="flow">
+        <div class="flow__step flow__step--automated">Rendering preparation</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--assisted">Visualization</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--checkpoint">Review — human checkpoint</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--human">Revision</div>
+      </div>
+
+      <div class="legend">
+        <span class="legend__item"><span class="swatch swatch--human"></span> Human-led</span>
+        <span class="legend__item"><span class="swatch swatch--assisted"></span> AI-assisted</span>
+        <span class="legend__item"><span class="swatch swatch--automated"></span> Automated</span>
+        <span class="legend__item"><span class="swatch swatch--checkpoint"></span> Required human checkpoint</span>
+      </div>
+      <p class="dim" style="font-size:.88rem; margin-top:var(--s4)">These four states are the colour
+      system of this entire website. Orange always means the same thing: a person has to be here.</p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------ customization tool -->
+  <section class="bg-lifted rule-top">
+    <div class="shell">
+      <span class="eyebrow">Practice</span>
+      <h2>Not every problem needs a platform. Sometimes it needs a small, specific tool.</h2>
+      <p class="lead" style="margin-top:var(--s4)">Small, project-specific tools created as needs
+      arise — not one universal platform, and not an eighteen-month vendor roadmap.</p>
+
+      <div class="flow">
+        <div class="flow__step flow__step--assisted">Project need</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--assisted">Custom tool</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--assisted">Testing</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--checkpoint">Human review</div>
+        <span class="flow__arrow">→</span>
+        <div class="flow__step flow__step--human">Implementation</div>
+      </div>
+
+      <p style="margin-top:var(--s5)"><strong>The project team defines the need and owns the
+      result.</strong> Not the software vendor, and not the person who wrote the tool. Data
+      organization, file preparation, repetitive setup, option comparison, model management,
+      prompt-based assistants and process automation all sit around that team — not above it.</p>
+      <p><a class="link-quiet" href="results.html">See the tools this produced →</a></p>
+    </div>
+  </section>
+
+  <!-- ---------------------------------------------------------- sameness -->
+  <section class="rule-top">
+    <div class="shell">
+      <span class="eyebrow">Risk · sameness</span>
+      <h2>AI may make firms look more alike.</h2>
+      <p class="lead" style="margin-top:var(--s4); margin-bottom:var(--s6)">This is the strategic risk
+      almost nobody is pricing in. Shared inputs converge on shared outputs — and a firm that looks
+      like every other firm has lost the only thing it was selling.</p>
+
+      <div class="compare">
+        <div class="compare__col">
+          <h3>Shared inputs → converging outputs</h3>
+          <p class="dim" style="font-size:.9rem; margin-bottom:var(--s4)">Same models · same prompts ·
+          same image styles · same datasets · same defaults · same optimization goals</p>
+          <ul>
+            <li>Homogenized imagery</li>
+            <li>Generic language</li>
+            <li>Repeated design solutions</li>
+            <li>Reduced local specificity</li>
+            <li>Loss of firm identity</li>
+          </ul>
+        </div>
+        <div class="compare__col compare__col--good">
+          <h3>What still differentiates</h3>
+          <ul>
+            <li>Local knowledge</li>
+            <li>Community relationships</li>
+            <li>Design judgment</li>
+            <li>Proprietary processes</li>
+            <li>Customized tools</li>
+            <li>A clear point of view</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:var(--s5); max-width:70ch">Every item in the right-hand column is something
+      a firm already owns and can sharpen. None of them come out of a subscription — which is exactly
+      why the third stage of our work is building tools around <em>your</em> standards rather than
+      renting someone else's defaults.</p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- licensure -->
+  <section class="bg-deep">
+    <div class="shell">
+      <span class="eyebrow">Regulation · licensure</span>
+      <h2>AI and the value of licensure.</h2>
+      <div class="grid grid--2" style="margin-top:var(--s6)">
+        <ul class="list-tick">
+          <li>Professional scopes <strong>vary by jurisdiction</strong></li>
+          <li>Market competition <strong>≠</strong> a practice-act violation</li>
+          <li>Licensure establishes <strong>competence, accountability, and protection of the public</strong></li>
+        </ul>
+        <ul class="list-tick">
+          <li>Adjacent professions are <strong>not the enemy</strong></li>
+          <li>Software capability <strong>≠</strong> professional qualification</li>
+          <li>Boards may need to monitor how professional-looking services are
+          <strong>produced, marketed, reviewed, and delivered</strong></li>
+        </ul>
+      </div>
+      <blockquote class="pull" style="border-left-color:var(--checkpoint-lift); margin-top:var(--s6)">
+        <p style="color:#FFFFFF">When professional-looking design services become easier to produce,
+        how do we communicate the value of licensed judgment?</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- checklist -->
+  <section class="rule-top">
+    <div class="shell">
+      <span class="eyebrow">Practice hygiene</span>
+      <h2>A responsible-use checklist.</h2>
+      <p class="lead" style="margin-top:var(--s4); margin-bottom:var(--s6)">Take it. Use it. It is
+      twelve questions, and it is the cheapest risk control available to a design firm right now.</p>
+
+      <div class="checklist">
+        <div class="checkcol">
+          <h3>Before</h3>
+          <ul>
+            <li>Is AI appropriate for this task?</li>
+            <li>What information will be shared?</li>
+            <li>What could happen if the output is wrong?</li>
+            <li>Who is qualified to review it?</li>
+          </ul>
+        </div>
+        <div class="checkcol">
+          <h3>During</h3>
+          <ul>
+            <li>Are assumptions and sources documented?</li>
+            <li>Are outputs treated as suggestions, not facts?</li>
+            <li>Are checkpoints built into the workflow?</li>
+            <li>Is meaningful human control maintained?</li>
+          </ul>
+        </div>
+        <div class="checkcol checkcol--gate">
+          <h3>Before delivery</h3>
+          <ul>
+            <li>Has the output been independently verified?</li>
+            <li>Is disclosure appropriate?</li>
+            <li>Is it consistent with contracts, policies, ethics, and regulations?</li>
+            <li>Is a named person accountable for the final decision?</li>
+          </ul>
+        </div>
+      </div>
+      <p class="dim" style="font-size:.92rem; margin-top:var(--s5)">The last question is the one that
+      decides whether any of the others happened.</p>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------------- faq -->
+  <section class="faq bg-lifted rule-top">
+    <div class="shell">
+      <span class="eyebrow">Common questions</span>
+      <h2>Asked plainly, answered plainly.</h2>
+      <div style="margin-top:var(--s6)">
+        <div class="faq__item">
+          <h3 class="faq__q">When is AI helpful in design work, and when is it not?</h3>
+          <p class="faq__a"><strong>It depends on two things: the consequence of an error, and how
+          easy the output is to verify.</strong> Low consequence and easy to verify — draft emails,
+          meeting summaries, file renaming, formatting — is the best starting ground. High consequence
+          but easy to verify, such as quantity takeoffs checked against the model or code lookups
+          confirmed in the code itself, can be used with rigorous verification. Low consequence but
+          hard to verify, like ideation imagery or precedent brainstorms, is useful if treated as
+          suggestion. High consequence and hard to verify — grading and drainage decisions,
+          structural or accessibility details, sealed documents — is least appropriate for uncritical
+          use. The more consequential and difficult to verify the output, the less appropriate it is
+          for uncritical AI use.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">Can AI output look correct but be wrong?</h3>
+          <p class="faq__a"><strong>Yes. Polished is not the same as correct.</strong> AI-generated
+          technical content can combine an incorrect dimension, missing information such as no edge
+          restraint or joint spec, an invented standard whose cited number does not exist, and assumed
+          site information the model cannot know — while still looking entirely professional.
+          Constructability, materials, and site conditions still require a professional.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">Can an AI QA/QC checker catch AI mistakes?</h3>
+          <p class="faq__a"><strong>Not reliably.</strong> A confident, polished AI output checked by
+          an AI checker that confidently agrees still requires human professional review. The two
+          systems can share assumptions, share training limitations, miss context, produce false
+          positives and false negatives, and give confident explanations of wrong results.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">How much review does AI-assisted work need?</h3>
+          <p class="faq__a"><strong>Match review to risk.</strong> Low-risk communication support
+          needs basic human review. Internal option generation needs comparison and source checking.
+          Client-facing material needs design-team review plus appropriate disclosure. Technical
+          documentation needs qualified disciplinary review plus established QA/QC. Health, safety and
+          welfare work, code, and sealed work need full professional judgment and
+          jurisdiction-appropriate review. Review effort should climb the ladder with consequence, not
+          with convenience.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">What is bounded autonomy in an AI workflow?</h3>
+          <p class="faq__a"><strong>Bounded autonomy is a multi-step workflow that runs inside
+          explicit limits.</strong> It is the fourth stage after manual work where a human does the
+          task, AI assistance where a human directs each step, and automation where defined tasks run
+          on their own. Autonomous workflows earn their bounds through defined limits, checkpoints,
+          logs, human approval, and a clear stop mechanism.</p>
+        </div>
+        <div class="faq__item">
+          <h3 class="faq__q">Does AI make design firms look more alike?</h3>
+          <p class="faq__a"><strong>It can.</strong> Shared inputs converge on shared outputs: the
+          same models, same prompts, same image styles, same datasets, same defaults and same
+          optimization goals produce homogenized imagery, generic language, repeated design solutions,
+          reduced local specificity, and loss of firm identity. What still differentiates a firm is
+          local knowledge, community relationships, design judgment, proprietary processes, customized
+          tools, and a clear point of view.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- references -->
+  <section class="rule-top">
+    <div class="shell shell--narrow">
+      <span class="eyebrow">Sources</span>
+      <h2>References.</h2>
+      <ul class="list-plain" style="margin-top:var(--s5)">
+        <li>NIST, <em>AI Risk Management Framework (AI RMF 1.0)</em>, Jan 2023 — nist.gov
+          <span class="ph">confirm latest version</span></li>
+        <li>ASLA — American Society of Landscape Architects, asla.org
+          <span class="ph">add guidance referenced</span></li>
+        <li>CLARB — Council of Landscape Architectural Registration Boards, clarb.org
+          <span class="ph">add specific materials cited</span></li>
+        <li>U.S. state licensing board practice acts <span class="ph">cite jurisdictions discussed</span></li>
+        <li>IEA, <em>Electricity — data centres and networks</em> — iea.org
+          <span class="ph">add report year / figures used</span></li>
+        <li>Peer-reviewed literature on AI energy &amp; water use <span class="ph">add studies with exact dates</span></li>
+        <li>Colorado State University — Dept. of Landscape Architecture
+          <span class="ph">add program / course details</span></li>
+        <li>Confluence internal AI-use guidance <span class="ph">cite if referenced</span></li>
+      </ul>
+      <p class="disclaimer" style="margin-top:var(--s5)">
+        Hypothetical examples are labeled as simulated. Regulatory requirements and professional
+        scopes vary by jurisdiction. This is not legal advice. Firms should review liability,
+        copyright, security and disclosure questions with their own counsel.
+      </p>
+    </div>
+  </section>
+
+  <section class="closer">
+    <div class="shell">
+      <h2>Bring us the workflow you're least sure about.</h2>
+      <p class="lead">The framework above is free and yours to use. Where it gets useful is applying
+      it to one real thing your firm actually does.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn--primary" href="contact.html">Start a conversation</a>
+        <a class="btn btn--ghost" href="possibilities.html">Model one workflow</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <a class="wordmark" href="index.html">[CONSULTANCY NAME<span>*</span>]</a>
+        <p class="footer__tag">Practitioners, not pundits.</p>
+        <p style="font-size:.88rem" class="dim"><span class="ph">Email — Dan to provide</span></p>
+      </div>
+      <div class="footer__col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="responsible-use.html">Responsible Use</a></li>
+          <li><a href="results.html">The Results</a></li>
+          <li><a href="possibilities.html">See What's Possible</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Ongoing Knowledge</h4>
+        <ul>
+          <li><a href="services.html#ongoing">Newsletters</a></li>
+          <li><a href="services.html#ongoing">Video training</a></li>
+          <li><a href="services.html#ongoing">Intel — State of the AI reports</a></li>
+          <li><a href="services.html#ongoing">Member sign-in</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>© <span class="ph">Year + legal entity — Dan to confirm</span></span>
+      <span><span class="ph">Privacy · Terms — Dan and counsel to provide</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js?v=20260716b"></script>
+</body>
+</html>
