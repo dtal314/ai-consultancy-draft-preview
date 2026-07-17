@@ -1493,37 +1493,74 @@ figcaption {
 .cred-card__meta { font-size: .9rem; color: var(--on-panel-soft); margin: 0; }
 
 /* The record, grouped by year. */
+/* The presentation record. Each year is a horizontal card; each mention is a
+   chip so the list reads as a record rather than a ragged column of text.
+   The section appears on a plain ground (index) AND on --lifted (about), so
+   every fill here is stated for both contexts, never left to inherit. */
+.cred-years {
+  display: grid;
+  gap: var(--s3);
+  margin-top: var(--s6);
+}
+
 .cred-year {
   display: grid;
-  grid-template-columns: 92px 1fr;
-  gap: var(--s4);
-  padding-block: var(--s4);
-  border-top: 1px solid var(--rule-soft);
-  align-items: start;
+  grid-template-columns: 84px 1fr;
+  gap: var(--s5);
+  align-items: center;
+  padding: var(--s4) clamp(18px, 2.2vw, 28px);
+  background: var(--lifted);
+  border: 1px solid var(--rule-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 5px;
 }
-.cred-year:last-child { border-bottom: 1px solid var(--rule-soft); }
+
+.bg-lifted .cred-year { background: var(--ground); }
+
 .cred-year__y {
   font-family: var(--display);
-  font-size: 1.5rem;
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
   line-height: 1;
   color: var(--accent);
-  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
 }
+
 .cred-year__list {
   list-style: none; margin: 0; padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: var(--s2) var(--s4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
 }
+
 .cred-year__list li {
-  font-size: .95rem;
-  color: var(--ink-soft);
-  line-height: 1.45;
+  background: var(--ground);
+  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
+  padding: 8px 13px;
+  font-size: .88rem;
+  line-height: 1.3;
+  color: var(--ink);
 }
+
+.bg-lifted .cred-year__list li { background: var(--lifted); }
+
 .cred-year__list li span {
   display: block;
-  font-size: .8rem;
+  font-size: .74rem;
   color: var(--ink-mute);
+  margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .cred-year { grid-template-columns: 1fr; gap: var(--s3); }
+}
+
+/* The ROI punchline. Dan's line, his capitals. */
+.beat {
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: var(--s2);
+  margin-bottom: 0;
 }
 @media (max-width: 620px) {
   .cred-year { grid-template-columns: 1fr; gap: var(--s2); }
