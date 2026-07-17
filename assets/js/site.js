@@ -31,6 +31,36 @@
     root.removeAttribute('data-theme-switching');
   }
 
+  /* Resolve the theme to an explicit attribute immediately. The palette blocks
+     match on [data-palette][data-theme], so leaving the theme implicit would
+     make every non-default palette fall back to light on an OS-dark machine. */
+  if (!root.getAttribute('data-theme')) {
+    root.setAttribute('data-theme', prefersDark.matches ? 'dark' : 'light');
+  }
+
+  /* -------------------------------------------------- style templates */
+  var PALETTES = ['rustic', 'autumn', 'urban', 'blush'];
+  var storedPal = null;
+  try { storedPal = localStorage.getItem('palette'); } catch (e) {}
+  if (PALETTES.indexOf(storedPal) === -1) storedPal = 'rustic';
+  if (storedPal !== 'rustic') root.setAttribute('data-palette', storedPal);
+
+  var palSel = document.querySelector('[data-palette-pick]');
+  if (palSel) {
+    palSel.value = storedPal;
+    palSel.addEventListener('change', function () {
+      var next = palSel.value;
+      if (PALETTES.indexOf(next) === -1) return;
+      // Same Chromium repaint trap as the theme swap: transitioned properties
+      // bound to custom properties will not repaint unless transitions are off.
+      repaintTheme(function () {
+        if (next === 'rustic') root.removeAttribute('data-palette');
+        else root.setAttribute('data-palette', next);
+      });
+      try { localStorage.setItem('palette', next); } catch (e) {}
+    });
+  }
+
   var themeBtn = document.querySelector('[data-theme-toggle]');
   if (themeBtn) {
     var paint = function () {

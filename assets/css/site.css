@@ -1917,3 +1917,290 @@ details.math[open] summary::before { content: "− "; }
     transition-duration: .01ms !important;
   }
 }
+
+/* =========================================================================
+   STYLE TEMPLATES
+   Four selectable palettes. The picker in the header writes data-palette on
+   <html>; site.js also always writes data-theme, so every combination is an
+   explicit attribute match and there is no media-query duplicate to keep in
+   sync.
+
+   Each supplied palette is only 5 swatches, none of them a usable page ground,
+   and several are far too light to carry small text. So for every palette:
+     * ground / lifted / sunk are derived, tinted toward that palette's family
+     * any swatch used for TEXT gets a darkened sibling; the raw swatch is kept
+       for fills and for text on dark panels
+   Every value is verified against WCAG AA in both themes.
+   ========================================================================= */
+
+/* ------------------------------------------------ AUTUMN HARVEST (light) ---
+   #D1673D  #F8D061  #C7853E  #8C572A  #603A2F                              */
+:root[data-palette="autumn"] {
+  --ground:    #F8F3EA;
+  --lifted:    #FDFBF7;
+  --sunk:      #EFE1CC;
+  --ink:       #3A241C;
+  --ink-soft:  #5C3B2C;
+  --ink-mute:  #6E4938;
+  --rule:      #D3BC9C;
+  --rule-soft: #E9DCC6;
+
+  --accent:      #AC4E28;
+  --accent-deep: #8A3C1C;
+  --accent-lift: #D1673D;
+  --on-accent:   #FFFFFF;
+
+  --human:      #603A2F;
+  --human-lift: #8C572A;
+  --human-deep: #3A241C;
+  --on-human:   #F8F3EA;
+  --assisted:   #FFFFFF;
+  --automated:  #8C572A;
+  --automated-lift: #F8D061;
+  --checkpoint: #AC4E28;
+  --checkpoint-lift: #D1673D;
+
+  --moss:  #603A2F;  --moss-lift:  #8C572A;
+  --ochre: #8C572A;  --ochre-lift: #C7853E;
+  --clay:  #AC4E28;  --clay-lift:  #D1673D;
+  --slate: #603A2F;  --slate-lift: #8C572A;
+
+  --panel:            #603A2F;
+  --on-panel:         #F8F3EA;
+  --on-panel-soft:    #E2CDBE;
+  --on-panel-tag:     #F8D061;
+  --on-panel-accent:  #F0A176;
+  --on-panel-rule:    rgba(248,243,234,.22);
+
+  --ph-ink:  #7A3A18;  --ph-bg: #FBEBD9;  --ph-line: #D8A472;
+}
+:root[data-palette="autumn"][data-theme="dark"] {
+  --ground:    #1E1310;
+  --lifted:    #2C1D17;
+  --sunk:      #140C0A;
+  --ink:       #F8F3EA;
+  --ink-soft:  #D6BFAC;
+  --ink-mute:  #AC8C76;
+  --rule:      #4A3227;
+  --rule-soft: #35231C;
+
+  --accent:      #E8845A;
+  --accent-deep: #F8D061;
+  --accent-lift: #D1673D;
+  --on-accent:   #1E1310;
+
+  --human:      #D9A88F;
+  --human-lift: #EFC9B4;
+  --human-deep: #8C572A;
+  --on-human:   #1E1310;
+  --assisted:   #F8F3EA;
+  --automated:  #F8D061;
+  --automated-lift: #F8D061;
+  --checkpoint: #E8845A;
+  --checkpoint-lift: #D1673D;
+
+  --moss:  #D9A88F;  --moss-lift:  #EFC9B4;
+  --ochre: #F8D061;  --ochre-lift: #FAE097;
+  --clay:  #E8845A;  --clay-lift:  #F0A176;
+  --slate: #D9A88F;  --slate-lift: #EFC9B4;
+
+  --panel:            #4A2B22;
+  --on-panel:         #F8F3EA;
+  --on-panel-soft:    #E2CDBE;
+  --on-panel-tag:     #F8D061;
+  --on-panel-accent:  #F5B48F;
+  --on-panel-rule:    rgba(248,243,234,.22);
+
+  --ph-ink:  #F5C48F;  --ph-bg: #3A2313;  --ph-line: #96602E;
+}
+
+/* -------------------------------------------------- URBAN RETREAT (light) ---
+   #757C8D  #A68F83  #AE898F  #8F6D6E  #283E4C                              */
+:root[data-palette="urban"] {
+  --ground:    #F3F2F1;
+  --lifted:    #FAFAF9;
+  --sunk:      #E1DEDB;
+  --ink:       #283E4C;
+  --ink-soft:  #44525C;
+  --ink-mute:  #58626B;
+  --rule:      #BDB8B4;
+  --rule-soft: #DBD7D4;
+
+  --accent:      #7A585A;
+  --accent-deep: #5F4344;
+  --accent-lift: #AE898F;
+  --on-accent:   #FFFFFF;
+
+  --human:      #283E4C;
+  --human-lift: #4E5F6E;
+  --human-deep: #16242E;
+  --on-human:   #F3F2F1;
+  --assisted:   #FFFFFF;
+  --automated:  #746156;
+  --automated-lift: #A68F83;
+  --checkpoint: #7A585A;
+  --checkpoint-lift: #AE898F;
+
+  --moss:  #283E4C;  --moss-lift:  #4E5F6E;
+  --ochre: #746156;  --ochre-lift: #A68F83;
+  --clay:  #7A585A;  --clay-lift:  #AE898F;
+  --slate: #4B5768;  --slate-lift: #757C8D;
+
+  --panel:            #283E4C;
+  --on-panel:         #F3F2F1;
+  --on-panel-soft:    #C6CDD3;
+  --on-panel-tag:     #C7B3A8;
+  --on-panel-accent:  #D4A9AF;
+  --on-panel-rule:    rgba(243,242,241,.22);
+
+  --ph-ink:  #5F4344;  --ph-bg: #EFE6E7;  --ph-line: #B49599;
+}
+:root[data-palette="urban"][data-theme="dark"] {
+  --ground:    #12191E;
+  --lifted:    #1C262D;
+  --sunk:      #0C1115;
+  --ink:       #F3F2F1;
+  --ink-soft:  #C2C7CC;
+  --ink-mute:  #949BA3;
+  --rule:      #35414A;
+  --rule-soft: #242E36;
+
+  --accent:      #C99DA3;
+  --accent-deep: #E0BEC3;
+  --accent-lift: #AE898F;
+  --on-accent:   #12191E;
+
+  --human:      #9AA6B5;
+  --human-lift: #C0C9D4;
+  --human-deep: #757C8D;
+  --on-human:   #12191E;
+  --assisted:   #F3F2F1;
+  --automated:  #C0A697;
+  --automated-lift: #A68F83;
+  --checkpoint: #C99DA3;
+  --checkpoint-lift: #AE898F;
+
+  --moss:  #9AA6B5;  --moss-lift:  #C0C9D4;
+  --ochre: #C0A697;  --ochre-lift: #D6C1B3;
+  --clay:  #C99DA3;  --clay-lift:  #E0BEC3;
+  --slate: #9AA6B5;  --slate-lift: #C0C9D4;
+
+  --panel:            #283E4C;
+  --on-panel:         #F3F2F1;
+  --on-panel-soft:    #C6CDD3;
+  --on-panel-tag:     #C7B3A8;
+  --on-panel-accent:  #D4A9AF;
+  --on-panel-rule:    rgba(243,242,241,.22);
+
+  --ph-ink:  #E2BEC3;  --ph-bg: #2F2224;  --ph-line: #7A585A;
+}
+
+/* ----------------------------------------------------- BLUSH TIDE (light) ---
+   #006E90  #FFCDB2  #FFB4A2  #E5989B  #B5838D                              */
+:root[data-palette="blush"] {
+  --ground:    #FDF6F1;
+  --lifted:    #FFFCFA;
+  --sunk:      #FFE3D3;
+  --ink:       #3A2730;
+  --ink-soft:  #5E4049;
+  --ink-mute:  #6F4D55;
+  --rule:      #E7C4B7;
+  --rule-soft: #F6DCCE;
+
+  --accent:      #006E90;
+  --accent-deep: #00506A;
+  --accent-lift: #FFB4A2;
+  --on-accent:   #FFFFFF;
+
+  --human:      #006E90;
+  --human-lift: #2E93B5;
+  --human-deep: #00506A;
+  --on-human:   #FFFFFF;
+  --assisted:   #FFFFFF;
+  --automated:  #9A5648;
+  --automated-lift: #FFCDB2;
+  --checkpoint: #944A53;
+  --checkpoint-lift: #E5989B;
+
+  --moss:  #006E90;  --moss-lift:  #2E93B5;
+  --ochre: #9A5648;  --ochre-lift: #FFCDB2;
+  --clay:  #944A53;  --clay-lift:  #E5989B;
+  --slate: #006E90;  --slate-lift: #2E93B5;
+
+  --panel:            #00506A;
+  --on-panel:         #FDF6F1;
+  --on-panel-soft:    #BDD9E3;
+  --on-panel-tag:     #FFCDB2;
+  --on-panel-accent:  #FFB4A2;
+  --on-panel-rule:    rgba(253,246,241,.22);
+
+  --ph-ink:  #8A3E48;  --ph-bg: #FFE7E0;  --ph-line: #D79A9E;
+}
+:root[data-palette="blush"][data-theme="dark"] {
+  --ground:    #161013;
+  --lifted:    #221A1F;
+  --sunk:      #0E0A0C;
+  --ink:       #FDF6F1;
+  --ink-soft:  #D5BDC2;
+  --ink-mute:  #A2868E;
+  --rule:      #3D2E35;
+  --rule-soft: #2A1F25;
+
+  --accent:      #4FB3D4;
+  --accent-deep: #86D0E6;
+  --accent-lift: #006E90;
+  --on-accent:   #161013;
+
+  --human:      #4FB3D4;
+  --human-lift: #86D0E6;
+  --human-deep: #006E90;
+  --on-human:   #161013;
+  --assisted:   #FDF6F1;
+  --automated:  #FFCDB2;
+  --automated-lift: #FFCDB2;
+  --checkpoint: #E5989B;
+  --checkpoint-lift: #E5989B;
+
+  --moss:  #4FB3D4;  --moss-lift:  #86D0E6;
+  --ochre: #FFCDB2;  --ochre-lift: #FFE0CE;
+  --clay:  #E5989B;  --clay-lift:  #FFB4A2;
+  --slate: #4FB3D4;  --slate-lift: #86D0E6;
+
+  --panel:            #00506A;
+  --on-panel:         #FDF6F1;
+  --on-panel-soft:    #BDD9E3;
+  --on-panel-tag:     #FFCDB2;
+  --on-panel-accent:  #FFB4A2;
+  --on-panel-rule:    rgba(253,246,241,.22);
+
+  --ph-ink:  #FFC4CA;  --ph-bg: #33202A;  --ph-line: #8A4F58;
+}
+
+/* ------------------------------------------------------ style picker (UI) --- */
+.style-pick { position: relative; display: inline-flex; }
+.style-pick select {
+  appearance: none; -webkit-appearance: none;
+  font-family: var(--sans);
+  font-size: .8rem;
+  color: var(--ink-soft);
+  background-color: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-pill);
+  padding: 8px 30px 8px 14px;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.style-pick select:hover { border-color: var(--accent); color: var(--ink); }
+.style-pick::after {
+  content: "";
+  position: absolute; right: 13px; top: 50%;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid var(--ink-mute);
+  border-bottom: 1.5px solid var(--ink-mute);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+.style-pick select option { background-color: var(--lifted); color: var(--ink); }
+@media (max-width: 720px) {
+  .style-pick select { padding: 7px 24px 7px 10px; font-size: .74rem; }
+}
