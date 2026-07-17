@@ -636,14 +636,17 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 .scope-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--s4);
-  align-items: stretch;
+  gap: var(--s3);
+  /* start, not stretch: a 3-item card stretched to match a 6-item one just
+     grows a pool of empty space inside itself. Let each card be its own height. */
+  align-items: start;
 }
 /* An odd last card spans the full width rather than sitting half-empty. */
 .scope-grid > .scope-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .scope-grid > .scope-card:last-child:nth-child(odd) ul {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   display: grid;
+  gap: 11px var(--s5);
 }
 @media (max-width: 780px) {
   .scope-grid { grid-template-columns: 1fr; }
@@ -657,10 +660,9 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   background:
     linear-gradient(to bottom,
       color-mix(in srgb, var(--stage, var(--accent)) 7%, transparent),
-      transparent 150px),
+      transparent 130px),
     var(--lifted);
-  padding: clamp(22px, 2.6vw, 32px);
-  height: 100%;
+  padding: clamp(18px, 2vw, 26px);
 }
 .scope-card__n {
   font-family: var(--display);
@@ -670,44 +672,67 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   margin-bottom: var(--s2);
 }
 .scope-card h2 {
-  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
-  line-height: 1.25;
+  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+  line-height: 1.2;
   margin-bottom: var(--s3);
 }
 .scope-card__lead {
-  font-size: .95rem;
+  font-size: .92rem;
   color: var(--ink-soft);
-  margin-bottom: var(--s4);
-  padding-bottom: var(--s4);
+  margin-bottom: var(--s3);
+  padding-bottom: var(--s3);
   border-bottom: 1px solid var(--rule-soft);
   max-width: none;
 }
-.scope-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
+
+/* Numbered markers instead of dashes. The dashes read as weak and unanchored;
+   a leading-zero numeral in the stage colour gives each line a real anchor
+   without adding an icon. Counters live in CSS so the markup stays plain <li>. */
+.scope-card ul {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 11px;
+  counter-reset: scope;
+}
 .scope-card li {
   position: relative;
-  padding-left: var(--s4);
-  font-size: .94rem;
-  line-height: 1.5;
+  padding-left: 30px;
+  font-size: .92rem;
+  line-height: 1.45;
   color: var(--ink-soft);
+  counter-increment: scope;
 }
 .scope-card li::before {
-  content: "";
-  position: absolute; left: 0; top: .6em;
-  width: 7px; height: 1px;
-  background: var(--stage, var(--accent));
+  content: counter(scope, decimal-leading-zero);
+  position: absolute; left: 0; top: 0;
+  font-family: var(--display);
+  font-size: .8rem;
+  line-height: 1.7;
+  font-variant-numeric: tabular-nums;
+  color: var(--stage, var(--accent));
+  background: none;
+  width: auto; height: auto;
 }
 .scope-card li strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
 /* Second-level bullets, as nested in the source outline */
+/* Second level: its own counter, lighter and smaller, so nesting still reads
+   as nesting rather than as a second first-level list. */
 .scope-card li > ul {
-  margin-top: var(--s2);
-  gap: var(--s2);
-  padding-left: var(--s2);
+  margin-top: 8px;
+  gap: 7px;
+  padding-left: 0;
+  counter-reset: sub;
 }
-.scope-card li > ul li { font-size: .88rem; color: var(--ink-mute); }
+.scope-card li > ul li {
+  font-size: .86rem;
+  color: var(--ink-mute);
+  padding-left: 26px;
+  counter-increment: sub;
+}
 .scope-card li > ul li::before {
-  width: 4px; height: 4px; border-radius: 50%;
-  background: var(--stage, var(--accent));
-  top: .62em; opacity: .7;
+  content: "." counter(sub, decimal);
+  font-size: .7rem;
+  line-height: 1.75;
+  opacity: .8;
 }
 /* A card that is itself a sub-part of the one before it */
 .scope-card--sub { border-top-style: dashed; }
