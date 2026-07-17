@@ -667,6 +667,32 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 @media (max-width: 720px) {
   .scope-sheet .scope-card { grid-template-columns: 1fr; gap: var(--s3); }
 }
+
+/* Stage Three only, Dan's call. Three parts, three columns, heading over its
+   own list and a hairline between. The rows stretch so the dividers run the
+   full height rather than stopping at the shortest column. */
+.scope-sheet--cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.scope-sheet--cols .scope-card {
+  grid-template-columns: 1fr;
+  gap: var(--s3);
+}
+
+.scope-sheet--cols .scope-card + .scope-card {
+  border-top: 0;
+  border-left: 1px solid var(--rule-soft);
+}
+
+@media (max-width: 900px) {
+  .scope-sheet--cols { grid-template-columns: 1fr; }
+  .scope-sheet--cols .scope-card + .scope-card {
+    border-left: 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+}
 .scope-card {
   border: 1px solid var(--rule-soft);
   border-top: 3px solid var(--stage, var(--accent));
