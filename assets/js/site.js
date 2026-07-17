@@ -115,9 +115,137 @@
     return (r < 0 ? '-$' : '$') + nf0.format(Math.abs(r));
   }
 
+  /* ------------------------------------------------ scenario templates */
+  /* ===================================================================
+     DAN — THIS IS THE ONLY BLOCK YOU NEED TO EDIT.
+
+     Each scenario drives the calculator below it. Everything is null on
+     purpose: these are meant to come from real-world experience, and the
+     calculator's whole premise is that it invents no benchmarks. A guessed
+     number here would be a fabricated benchmark wearing a scenario's name.
+
+     Fill in what you know and leave the rest null — the calculator handles
+     partial data correctly (blank cost shows hours but no dollar value).
+
+       description : one or two sentences, shown when the button is picked
+       people      : how many people typically do this
+       hours       : hours per person per week
+       weeks       : working weeks per year
+       cost        : fully loaded hourly cost (leave null to show hours only)
+       impl        : one-time implementation + training cost
+       monthly     : recurring monthly AI cost
+       retired     : verified annual direct cost retired
+       uptake      : % of the workflow done with AI      (0-100)
+       reduction   : % measured time reduction           (0-100)
+     =================================================================== */
+  var SCENARIOS = {
+    modeling:  { label: 'Modeling',             description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    rendering: { label: 'Rendering',            description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    graphics:  { label: 'Graphics',             description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    marketing: { label: 'Marketing',            description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    proposals: { label: 'Proposals',            description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    research:  { label: 'Research',             description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    precedent: { label: 'Precedent Studies',    description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    admin:     { label: 'Administrative Tasks', description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null },
+    planning:  { label: 'Planning Work',        description: null,
+                 people: null, hours: null, weeks: null, cost: null,
+                 impl: null, monthly: null, retired: null, uptake: null, reduction: null }
+  };
+
+  var FIELD_MAP = {
+    people: 'c-people', hours: 'c-hours', weeks: 'c-weeks', cost: 'c-cost',
+    impl: 'c-impl', monthly: 'c-monthly', retired: 'c-retired',
+    uptake: 'c-uptake', reduction: 'c-reduction'
+  };
+
+  function initScenarios() {
+    var btns = document.querySelectorAll('.scen-btn');
+    if (!btns.length) return;
+    var panel = document.getElementById('scen-panel');
+    var nameEl = document.getElementById('scen-name');
+    var bodyEl = document.getElementById('scen-body');
+
+    function clearCalc() {
+      Object.keys(FIELD_MAP).forEach(function (k) {
+        var n = document.getElementById(FIELD_MAP[k]);
+        if (!n) return;
+        if (n.type === 'range') n.value = 0; else n.value = '';
+      });
+      var nm = document.getElementById('c-name');
+      if (nm) nm.value = '';
+    }
+
+    function apply(key) {
+      btns.forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-scen') === key));
+      });
+
+      if (key === 'own') {
+        panel.hidden = true;
+        clearCalc();
+        fire();
+        return;
+      }
+
+      var sc = SCENARIOS[key];
+      if (!sc) return;
+      clearCalc();
+
+      var nm = document.getElementById('c-name');
+      if (nm) nm.value = sc.label;
+
+      var supplied = 0;
+      Object.keys(FIELD_MAP).forEach(function (k) {
+        if (sc[k] === null || sc[k] === undefined) return;
+        var n = document.getElementById(FIELD_MAP[k]);
+        if (n) { n.value = sc[k]; supplied++; }
+      });
+
+      nameEl.textContent = sc.label;
+      if (sc.description) {
+        bodyEl.textContent = sc.description;
+      } else {
+        // No invented copy and no invented numbers — say so plainly.
+        bodyEl.innerHTML = '<span class="ph">Scenario description and figures — Dan to provide' +
+          '</span> The workflow name is set; the fields below stay blank until real numbers exist ' +
+          'for this scenario. Enter your own in the meantime.';
+      }
+      panel.hidden = false;
+      fire();
+    }
+
+    function fire() {
+      // let the calculator recompute off the new values
+      Object.keys(FIELD_MAP).forEach(function (k) {
+        var n = document.getElementById(FIELD_MAP[k]);
+        if (n) n.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    }
+
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () { apply(b.getAttribute('data-scen')); });
+    });
+  }
+
   /* --------------------------------------------------------- calculator */
   var calc = document.getElementById('calc');
-  if (calc) initCalc(calc);
+  if (calc) { initCalc(calc); initScenarios(); }
 
   function initCalc(form) {
     var el = function (id) { return document.getElementById(id); };

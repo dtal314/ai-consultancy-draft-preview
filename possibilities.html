@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow">
-<title>Model the value of one better workflow — AI ROI calculator for AEC firms</title>
-<meta name="description" content="A free, ungated calculator that models the hours and capacity value of applying AI to one specific, repeatable workflow in your firm. Uses your own observed numbers. No benchmarks assumed.">
+<title>Model the Value of Better Workflow — AI scenario calculator for AEC firms</title>
+<meta name="description" content="Choose a premade scenario based on our real world experience, or model your own. A free, ungated calculator for the hours and capacity value of applying AI to one repeatable workflow. No universal benchmarks assumed.">
 <link rel="canonical" href="https://[FINAL-DOMAIN-DAN-TO-PROVIDE]/possibilities">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=20260716h">
+<link rel="stylesheet" href="assets/css/site.css?v=20260716i">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -160,10 +160,9 @@
   <section class="rule-top" style="padding-block:clamp(48px,6vw,88px) var(--s6)">
     <div class="shell shell--narrow">
       <span class="eyebrow">The calculator</span>
-      <h2>Model the value of one better workflow.</h2>
-      <p class="lead" style="margin-top:var(--s5)">Choose one specific, repeatable workflow. Use your
-      firm's own observed inputs. This model assumes no universal AEC productivity benchmark — every
-      number below is yours, and it starts blank on purpose.</p>
+      <h2>Model the Value of Better Workflow.</h2>
+      <p class="lead" style="margin-top:var(--s5)">Choose a premade scenario, based on our real world
+      experience, or model your own. The model assumes no universal benchmarks.</p>
       <p class="dim" style="font-size:.9rem">Free. No email required. Nothing is sent anywhere — the
       math runs in your browser.</p>
     </div>
@@ -172,6 +171,27 @@
   <section style="padding-top:0">
     <div class="shell shell--narrow">
       <form class="calc" id="calc" novalidate>
+
+
+        <div class="scenarios">
+          <span class="eyebrow">Start from a scenario</span>
+          <div class="scenarios__row" role="group" aria-label="Premade workflow scenarios">
+            <button class="scen-btn" type="button" data-scen="modeling"   aria-pressed="false">Modeling</button>
+            <button class="scen-btn" type="button" data-scen="rendering"  aria-pressed="false">Rendering</button>
+            <button class="scen-btn" type="button" data-scen="graphics"   aria-pressed="false">Graphics</button>
+            <button class="scen-btn" type="button" data-scen="marketing"  aria-pressed="false">Marketing</button>
+            <button class="scen-btn" type="button" data-scen="proposals"  aria-pressed="false">Proposals</button>
+            <button class="scen-btn" type="button" data-scen="research"   aria-pressed="false">Research</button>
+            <button class="scen-btn" type="button" data-scen="precedent"  aria-pressed="false">Precedent Studies</button>
+            <button class="scen-btn" type="button" data-scen="admin"      aria-pressed="false">Administrative Tasks</button>
+            <button class="scen-btn" type="button" data-scen="planning"   aria-pressed="false">Planning Work</button>
+            <button class="scen-btn scen-btn--own" type="button" data-scen="own" aria-pressed="true">Model your own</button>
+          </div>
+          <div class="scen-panel" id="scen-panel" hidden aria-live="polite">
+            <p class="scen-panel__name" id="scen-name"></p>
+            <p class="scen-panel__body" id="scen-body"></p>
+          </div>
+        </div>
 
         <!-- ------------------------------------------------ baseline -->
         <div class="calc__group">
@@ -515,6 +535,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=20260716h"></script>
+<script src="assets/js/site.js?v=20260716i"></script>
 </body>
 </html>

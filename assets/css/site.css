@@ -2204,3 +2204,49 @@ details.math[open] summary::before { content: "− "; }
 @media (max-width: 720px) {
   .style-pick select { padding: 7px 24px 7px 10px; font-size: .74rem; }
 }
+
+/* ------------------------------------------------- scenario templates --- */
+/* Premade workflow scenarios. The buttons drive the calculator below; the
+   values behind each one are Dan's to supply — see SCENARIOS in site.js.
+   Nothing is prefilled with a guessed number, which is the same rule the
+   calculator itself runs on. */
+.scenarios { margin-bottom: var(--s6); }
+.scenarios__row {
+  display: flex; flex-wrap: wrap; gap: var(--s2);
+  margin-top: var(--s4);
+}
+.scen-btn {
+  font-family: var(--sans);
+  font-size: .88rem;
+  color: var(--ink-soft);
+  background-color: var(--lifted);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease),
+              background-color var(--dur) var(--ease);
+}
+.scen-btn:hover { border-color: var(--accent); color: var(--ink); }
+.scen-btn[aria-pressed="true"] {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+.scen-btn--own { border-style: dashed; }
+
+.scen-panel {
+  margin-top: var(--s4);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 5px 5px 0;
+  background-color: var(--lifted);
+  padding: var(--s4);
+}
+.scen-panel[hidden] { display: none !important; }
+.scen-panel__name {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  margin-bottom: var(--s2);
+}
+.scen-panel__body { font-size: .95rem; color: var(--ink-soft); margin: 0; max-width: var(--measure); }
