@@ -671,7 +671,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   display: block;
   margin-bottom: var(--s2);
 }
-.scope-card h2 {
+.scope-card h2, .scope-card h3 {
   font-size: clamp(1.2rem, 1.6vw, 1.4rem);
   line-height: 1.2;
   margin-bottom: var(--s3);
@@ -1906,6 +1906,9 @@ details.math[open] summary::before { content: "− "; }
 }
 .footer__col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); }
 .footer__col a { font-size: .92rem; text-decoration: none; color: var(--ink-soft); }
+/* Stage links nest under Services. Indent them, do not punctuate them. */
+.footer__col li.sub { padding-left: var(--s3); }
+.footer__col li.sub a { color: var(--ink-mute); }
 .footer__col a:hover { color: var(--accent); }
 .footer__base {
   display: flex; flex-wrap: wrap; justify-content: space-between;
