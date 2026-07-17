@@ -625,6 +625,103 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 }
 .stage-card__cta { margin-top: var(--s4); }
 
+/* --------------------------------------------------------- scope cards */
+/* One card per heading in the tiers document. Long stacked lists read as
+   spread-out and disconnected; a card grid keeps each part of the scope as a
+   single legible object. */
+/* Two columns, not auto-fit. auto-fit gave three across and stranded the
+   fourth card alone on its own row — which is exactly the disconnected,
+   spread-out look these pages had. Two columns keeps every stage balanced
+   (4 cards = 2x2, 3 cards = 2+1 with the last spanning). */
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s4);
+  align-items: stretch;
+}
+/* An odd last card spans the full width rather than sitting half-empty. */
+.scope-grid > .scope-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.scope-grid > .scope-card:last-child:nth-child(odd) ul {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  display: grid;
+}
+@media (max-width: 780px) {
+  .scope-grid { grid-template-columns: 1fr; }
+  .scope-grid > .scope-card:last-child:nth-child(odd) { grid-column: auto; }
+  .scope-grid > .scope-card:last-child:nth-child(odd) ul { grid-template-columns: 1fr; }
+}
+.scope-card {
+  border: 1px solid var(--rule-soft);
+  border-top: 3px solid var(--stage, var(--accent));
+  border-radius: 5px;
+  background:
+    linear-gradient(to bottom,
+      color-mix(in srgb, var(--stage, var(--accent)) 7%, transparent),
+      transparent 150px),
+    var(--lifted);
+  padding: clamp(22px, 2.6vw, 32px);
+  height: 100%;
+}
+.scope-card__n {
+  font-family: var(--display);
+  font-size: .95rem;
+  color: var(--stage, var(--accent));
+  display: block;
+  margin-bottom: var(--s2);
+}
+.scope-card h2 {
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  line-height: 1.25;
+  margin-bottom: var(--s3);
+}
+.scope-card__lead {
+  font-size: .95rem;
+  color: var(--ink-soft);
+  margin-bottom: var(--s4);
+  padding-bottom: var(--s4);
+  border-bottom: 1px solid var(--rule-soft);
+  max-width: none;
+}
+.scope-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); }
+.scope-card li {
+  position: relative;
+  padding-left: var(--s4);
+  font-size: .94rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.scope-card li::before {
+  content: "";
+  position: absolute; left: 0; top: .6em;
+  width: 7px; height: 1px;
+  background: var(--stage, var(--accent));
+}
+.scope-card li strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+/* A card that is itself a sub-part of the one before it */
+.scope-card--sub { border-top-style: dashed; }
+.scope-card--sub .scope-card__n { opacity: .75; }
+
+/* Investment, stated plainly at the foot of the scope */
+.invest-bar {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s3) var(--s5);
+  background: var(--panel);
+  border-radius: 5px;
+  padding: clamp(24px, 3vw, 36px);
+  margin-top: var(--s6);
+}
+.invest-bar__label {
+  font-size: .7rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--on-panel-tag);
+  width: 100%;
+}
+.invest-bar__figure {
+  font-family: var(--display);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  line-height: 1;
+  color: #FFFFFF;
+}
+.invest-bar__note { font-size: .9rem; color: var(--on-panel-soft); margin: 0; max-width: 46ch; }
+
 /* Detail-page header for a single stage */
 .stage-head { border-bottom: 1px solid var(--rule); }
 .stage-head__no {
