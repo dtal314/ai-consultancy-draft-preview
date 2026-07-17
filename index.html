@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=20260716b">
+<link rel="stylesheet" href="assets/css/site.css?v=20260716c">
 
 <script type="application/ld+json">
 {
@@ -74,7 +74,7 @@
           "name": "What is an AiT?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "An AiT is a designated in-house AI trainee or champion. A specific named person inside a firm who receives deeper role-specific AI training and helps organize and keep track of how AI is used across the firm. General literacy tells everyone what the tools are; an AiT is who owns it once the training ends."
+            "text": "An AiT is an AI Technology person — a dedicated in-house R&D person or group, given the full scope of current understanding and tools, whose job is to propel the firm forward and keep AI adoption alive from the inside. General literacy tells everyone what the tools are; an AiT is who owns it once the training ends."
           }
         }
       ]
@@ -85,22 +85,32 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div style="background:#5C3020;color:#F3E4DC;font:500 13px/1.5 Inter,Arial,sans-serif;padding:10px 20px;text-align:center;letter-spacing:.02em">DRAFT PREVIEW — unpublished work in progress. Not for circulation. Bracketed items are unresolved placeholders.</div>
 
-<div class="draftbar" role="status">
-  <strong>25% Draft</strong> —
-  <span>work in progress. Content, pricing and branding are unfinished; bracketed items are unresolved placeholders.</span>
-</div>
 
 <header class="site-header">
   <div class="shell site-header__in">
     <a class="wordmark" href="index.html">[CONSULTANCY NAME<span>*</span>]</a>
     <nav class="nav" id="primary-nav" aria-label="Primary">
       <a href="index.html" aria-current="page">Home</a>
+      <span class="nav__item" data-open="false">
+        <button class="nav__trigger" type="button" aria-expanded="false"
+                aria-controls="services-menu">
+          Services <span class="nav__caret" aria-hidden="true"></span>
+        </button>
+        <div class="nav__menu" id="services-menu">
+          <a href="services.html"><strong>All services</strong><small>The three stages, side by side</small></a>
+          <hr>
+          <a class="nav__stage stage--understand" href="stage-understand.html">
+            <i>01</i><span><strong>Understand</strong><small>60-Day AI Accelerator · $10–15k</small></span></a>
+          <a class="nav__stage stage--adopt" href="stage-adopt.html">
+            <i>02</i><span><strong>Adopt</strong><small>90-Day AI Immersion · $20–25k</small></span></a>
+          <a class="nav__stage stage--build" href="stage-build.html">
+            <i>03</i><span><strong>Build</strong><small>180-Day AI Competency · $30–40k</small></span></a>
+        </div>
+      </span>
       <a href="responsible-use.html">Responsible Use</a>
-      <a href="results.html">The Results</a>
+      <a href="case-studies.html">Case Studies</a>
       <a href="possibilities.html">See What's Possible</a>
-      <a href="services.html">Services</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -125,10 +135,10 @@
     </div>
     <div class="shell hero__body">
       <span class="eyebrow">AI for Landscape Architecture · Architecture · Civil · AEC</span>
-      <h1>Responsible AI use is a skill. We earned ours on real projects. We teach it.</h1>
-      <p class="lead">Adoption is already underway in your firm, usually informally. We've spent
-      three years using these tools on live work — learning what holds up, what quietly fails, and
-      what a design practice has to put around them. That is what we teach.</p>
+      <h1>Understand.<br>Adopt.<br>Build.</h1>
+      <p class="lead">Responsible AI use is a skill. We earned ours on real projects — and we teach
+      it, in that order. Adoption is already underway in your firm, usually informally; we make it
+      deliberate.</p>
       <div class="cta-row">
         <a class="btn btn--primary" href="contact.html">Start with one workflow</a>
         <a class="btn btn--ghost" href="responsible-use.html">Read the framework</a>
@@ -148,8 +158,10 @@
   <!-- ------------------------------------------------ latest presentation -->
   <section class="section--tight">
     <div class="shell">
-      <span class="eyebrow">Our latest presentation</span>
-      <h2 style="margin-bottom:var(--s5)">This is what we mean by teaching it.</h2>
+      <span class="eyebrow">Stage one · our latest presentation</span>
+      <h2 style="margin-bottom:var(--s3)">We Understand.</h2>
+      <p class="lead" style="margin-bottom:var(--s5)">And we can explain it — which is the whole
+      first stage. This is a full session, not a trailer.</p>
 
       <figure style="margin:0">
         <div class="video" data-video="XfX8tMhhRlc">
@@ -263,7 +275,7 @@
         <li>
           <div>
             <h3>Someone owns it</h3>
-            <p>Named AiT champions organize and keep track of AI use inside the firm. Literacy exists
+            <p>Named AiTs — AI Technology people — organize and keep track of AI use inside the firm. Literacy exists
             firmwide, and deeper literacy exists where the work actually is.</p>
           </div>
         </li>
@@ -423,10 +435,11 @@
         </div>
         <div class="faq__item">
           <h3 class="faq__q">What is an AiT?</h3>
-          <p class="faq__a"><strong>An AiT is a designated in-house AI trainee or champion.</strong>
-          A specific named person inside a firm who receives deeper role-specific AI training and
-          helps organize and keep track of how AI is used across the firm. General literacy tells
-          everyone what the tools are; an AiT is who owns it once the training ends.</p>
+          <p class="faq__a"><strong>An AiT is an AI Technology person</strong> — a dedicated
+          in-house R&amp;D person or group, given the full scope of current understanding and tools,
+          whose job is to propel the firm forward and keep AI adoption alive from the inside. General
+          literacy tells everyone what the tools are; an AiT is who owns it once the training ends.
+          Building that team is <a class="link-quiet" href="stage-build.html">Stage Three</a>.</p>
         </div>
       </div>
     </div>
@@ -440,7 +453,7 @@
       too long. That is where this starts.</p>
       <div class="cta-row" style="justify-content:center">
         <a class="btn btn--primary" href="contact.html">Start a conversation</a>
-        <a class="btn btn--ghost" href="results.html">See what we've built</a>
+        <a class="btn btn--ghost" href="case-studies.html">See what we've built</a>
       </div>
       <p class="dim" style="font-size:.9rem; margin-top:var(--s4)">Or
       <a class="link-quiet" href="possibilities.html">model the value first</a> — the calculator is
@@ -462,10 +475,13 @@
         <h4>Site</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="responsible-use.html">Responsible Use</a></li>
-          <li><a href="results.html">The Results</a></li>
-          <li><a href="possibilities.html">See What's Possible</a></li>
           <li><a href="services.html">Services</a></li>
+          <li><a href="stage-understand.html">— Understand</a></li>
+          <li><a href="stage-adopt.html">— Adopt</a></li>
+          <li><a href="stage-build.html">— Build</a></li>
+          <li><a href="responsible-use.html">Responsible Use</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="possibilities.html">See What's Possible</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -487,6 +503,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=20260716b"></script>
+<script src="assets/js/site.js?v=20260716c"></script>
 </body>
 </html>

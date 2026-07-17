@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=20260716b">
+<link rel="stylesheet" href="assets/css/site.css?v=20260716c">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -88,22 +88,32 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div style="background:#5C3020;color:#F3E4DC;font:500 13px/1.5 Inter,Arial,sans-serif;padding:10px 20px;text-align:center;letter-spacing:.02em">DRAFT PREVIEW — unpublished work in progress. Not for circulation. Bracketed items are unresolved placeholders.</div>
 
-<div class="draftbar" role="status">
-  <strong>25% Draft</strong> —
-  <span>work in progress. Content, pricing and branding are unfinished; bracketed items are unresolved placeholders.</span>
-</div>
 
 <header class="site-header">
   <div class="shell site-header__in">
     <a class="wordmark" href="index.html">[CONSULTANCY NAME<span>*</span>]</a>
     <nav class="nav" id="primary-nav" aria-label="Primary">
       <a href="index.html">Home</a>
+      <span class="nav__item" data-open="false">
+        <button class="nav__trigger" type="button" aria-expanded="false"
+                aria-controls="services-menu" aria-current="page">
+          Services <span class="nav__caret" aria-hidden="true"></span>
+        </button>
+        <div class="nav__menu" id="services-menu">
+          <a href="services.html"><strong>All services</strong><small>The three stages, side by side</small></a>
+          <hr>
+          <a class="nav__stage stage--understand" href="stage-understand.html">
+            <i>01</i><span><strong>Understand</strong><small>60-Day AI Accelerator · $10–15k</small></span></a>
+          <a class="nav__stage stage--adopt" href="stage-adopt.html">
+            <i>02</i><span><strong>Adopt</strong><small>90-Day AI Immersion · $20–25k</small></span></a>
+          <a class="nav__stage stage--build" href="stage-build.html">
+            <i>03</i><span><strong>Build</strong><small>180-Day AI Competency · $30–40k</small></span></a>
+        </div>
+      </span>
       <a href="responsible-use.html">Responsible Use</a>
-      <a href="results.html">The Results</a>
+      <a href="case-studies.html">Case Studies</a>
       <a href="possibilities.html">See What's Possible</a>
-      <a href="services.html" aria-current="page">Services</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -182,166 +192,81 @@
     </div>
   </section>
 
-  <div class="ph-block shell shell--narrow" style="margin-bottom:var(--s6)">
-    <strong>Pricing — Dan to set.</strong> The structure below is deliberately transparent, because
-    stating price openly is a trust move and “contact for pricing” is not. But no fixed price list
-    exists yet, so every name, price, duration, format and commitment stays bracketed until you set
-    it. Nothing here is imported from any other firm's price list.
-  </div>
 
-  <!-- ------------------------------------------------- starting point -->
-  <section class="section--tight">
+
+  <!-- ------------------------------------------------- the three stages -->
+  <section class="rule-top">
     <div class="shell">
-      <div class="tier" style="border-top-width:2px">
-        <div class="tier__aside">
-          <span class="eyebrow eyebrow--accent">The starting point</span>
-          <p class="dim" style="font-size:.9rem">The lowest-risk way in. It almost always reveals
-          whether there's a bigger opportunity worth exploring.</p>
-        </div>
-        <div>
-          <p class="tier__name"><span class="ph">Engagement name — Dan to confirm</span></p>
-          <p>A direct, honest look at where your firm actually stands with AI. No generic framework.
-          We work through the five things every firm has to address, inventory what's already being
-          used (officially or not), find who your AiT champions should be, and leave you with an
-          initial road map.</p>
-          <dl class="tier__spec">
-            <dt>Focus</dt>
-            <dd>Policy and use · security and privacy · liability and copyright · training and
-            retention · ROI. Plus: the bot ecosystem, which subscriptions may be worth it, and a
-            current-use inventory.</dd>
-            <dt>Format</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
-            <dt>Deliverable</dt>
-            <dd><span class="ph">Dan to confirm — name, contents, turnaround</span></dd>
-            <dt>Duration</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
+      <span class="eyebrow">The three stages</span>
+      <h2>Each one includes the one before it.</h2>
+      <p class="lead" style="margin-top:var(--s4); margin-bottom:var(--s6)">Short versions below.
+      Each links to the full scope, the schedule and what you keep afterwards.</p>
+
+      <div class="grid grid--3">
+
+        <article class="stage-card stage--understand">
+          <span class="stage-card__no">Stage one · 60 days</span>
+          <p class="stage-card__name">Understand</p>
+          <p class="stage-card__sub">The 60-Day AI Accelerator</p>
+          <p class="stage-card__promise">Spread AI literacy and understanding to all staff and
+          stakeholders. Go beyond the headlines to the emergent AI ecosystem — and how it impacts
+          your work, your finances and your life.</p>
+          <dl class="stage-card__spec">
+            <dt>Scope</dt><dd>Five one-hour firm presentations · firm survey · policy, privacy and
+            security · 12 months of resources</dd>
+            <dt>Best for</dt><dd>Owners who need to tool up, and curious staff already using AI
+            informally</dd>
+            <dt>You keep</dt><dd>Firm policy, custom learning videos, prompt guides, monthly
+            newsletter</dd>
           </dl>
-          <p class="tier__invest">Investment: <span class="ph">Dan to confirm</span></p>
-        </div>
+          <p class="stage-card__invest">Investment: $10,000–$15,000
+            <small>Estimate of 10–20 hours at $250–$500/hour</small></p>
+          <p class="stage-card__cta"><a class="btn btn--ghost btn--sm" href="stage-understand.html">Stage one in full →</a></p>
+        </article>
+
+        <article class="stage-card stage--adopt">
+          <span class="stage-card__no">Stage two · 90 days</span>
+          <p class="stage-card__name">Adopt</p>
+          <p class="stage-card__sub">The 90-Day AI Immersion</p>
+          <p class="stage-card__promise">Everything in Stage One, then a stronger foundation for
+          adoption. Identify your biggest adopters and train them individually — so the firm has an
+          AI champion who can pursue R&amp;D and keep adoption alive.</p>
+          <dl class="stage-card__spec">
+            <dt>Scope</dt><dd>Five more presentations (ten total) · immersive individual training for
+            1–3 people · introduces the Citizen Developer</dd>
+            <dt>Best for</dt><dd>Firms past the demo stage that need adoption to actually stick</dd>
+            <dt>You keep</dt><dd>Prompting databases and guides, a custom tool built for the firm, a
+            trained AI champion</dd>
+          </dl>
+          <p class="stage-card__invest">Investment: $20,000–$25,000
+            <small>Includes all of Stage One</small></p>
+          <p class="stage-card__cta"><a class="btn btn--ghost btn--sm" href="stage-adopt.html">Stage two in full →</a></p>
+        </article>
+
+        <article class="stage-card stage--build">
+          <span class="stage-card__no">Stage three · 180 days</span>
+          <p class="stage-card__name">Build</p>
+          <p class="stage-card__sub">The 180-Day AI Competency</p>
+          <p class="stage-card__promise">Build a core AI team — AiTs — to propel the firm forward
+          with dedicated R&amp;D. The Citizen Developer at full potential, customizing process,
+          operations and integration. Introduces agents.</p>
+          <dl class="stage-card__spec">
+            <dt>Scope</dt><dd>Full Citizen Developer · firm AEO (beta) · agents, safety and an
+            agentic network</dd>
+            <dt>Best for</dt><dd>Firms ready to run their own R&amp;D rather than buy someone
+            else's defaults</dd>
+            <dt>You keep</dt><dd>An in-house AiT team, custom tooling, an agentic backbone</dd>
+          </dl>
+          <p class="stage-card__invest">Investment: $30,000–$40,000
+            <small>Includes all of Stage One and Stage Two</small></p>
+          <p class="stage-card__cta"><a class="btn btn--ghost btn--sm" href="stage-build.html">Stage three in full →</a></p>
+        </article>
+
       </div>
 
-      <p class="bridge shell--narrow" style="padding-left:0">The starting point is the starting
-      point, not the ceiling. What it finds becomes the road map for everything below.</p>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------------------ the ladder -->
-  <section class="section--tight">
-    <div class="shell">
-
-      <div class="tier">
-        <div class="tier__aside">
-          <span class="eyebrow eyebrow--accent">Stage one</span>
-          <p class="tier__name" style="font-size:1.6rem; color:var(--accent)">Understand</p>
-          <p class="dim" style="font-size:.9rem">Literacy before tooling. Every time.</p>
-        </div>
-        <div>
-          <p>What these tools are, in plain language — for the whole firm, and then deeper for the
-          people who need it. This is where the uncomfortable questions get answered while they're
-          still cheap.</p>
-          <dl class="tier__spec">
-            <dt>Focus</dt>
-            <dd>AI 101 and the LLM ecosystem · which bots merit subscriptions and why · policy and
-            use · security and privacy · liability and copyright · writing with AI for emails,
-            proposals and memos · deep research · role mapping · organizing and tracking AI use.</dd>
-            <dt>Format</dt>
-            <dd><span class="ph">Dan to confirm</span> — options in the material include live firm
-            presentations with Q&amp;A, recorded presentations, and training videos.</dd>
-            <dt>Best for</dt>
-            <dd>Firms where AI is already in use informally and nobody owns it.</dd>
-            <dt>Duration</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
-          </dl>
-          <p class="tier__invest">Investment: <span class="ph">Dan to confirm</span></p>
-        </div>
-      </div>
-
-      <p class="bridge shell--narrow" style="padding-left:0">Clarity before adoption. A firm that
-      adopts before it understands is just buying subscriptions.</p>
-
-      <div class="tier">
-        <div class="tier__aside">
-          <span class="eyebrow eyebrow--accent">Stage two</span>
-          <p class="tier__name" style="font-size:1.6rem; color:var(--accent)">Adopt</p>
-          <p class="dim" style="font-size:.9rem">One workflow, measured, before ten.</p>
-        </div>
-        <div>
-          <p>Bounded pilots on real work. Training for the people who will carry it. Governance that
-          exists on paper rather than in someone's head. And honest measurement — including of the
-          things that didn't work.</p>
-          <dl class="tier__spec">
-            <dt>Focus</dt>
-            <dd>Bounded pilots · training on specific AI systems · firmwide and role-specific
-            literacy · AiT development · tracking AI use · professional review · ROI measurement.</dd>
-            <dt>Format</dt>
-            <dd><span class="ph">Dan to confirm</span> — tiered ramp-up as the firm adopts is
-            described in the material.</dd>
-            <dt>Best for</dt>
-            <dd>Firms past the demo stage that need one workflow to actually stick.</dd>
-            <dt>Duration</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
-          </dl>
-          <p class="tier__invest">Investment: <span class="ph">Dan to confirm</span></p>
-        </div>
-      </div>
-
-      <p class="bridge shell--narrow" style="padding-left:0">Measured pilot before scale. And never
-      build for a bottleneck you haven't measured.</p>
-
-      <div class="tier">
-        <div class="tier__aside">
-          <span class="eyebrow eyebrow--accent">Stage three</span>
-          <p class="tier__name" style="font-size:1.6rem; color:var(--accent)">Build</p>
-          <p class="dim" style="font-size:.9rem">Insourcing. Get comfortable with the word.</p>
-        </div>
-        <div>
-          <p>Targeted tools aimed at defined bottlenecks — built to your standards, your data, your
-          hard-won lessons. This is the stage everyone wants to start at, and the one that only
-          works last.</p>
-          <dl class="tier__spec">
-            <dt>Focus</dt>
-            <dd>Token economics and the future of SaaS · choosing which problems custom apps should
-            solve · agents and agentic backbones · automation · visualization pipelines · NOVA ·
-            R[APP] · SketchUp POWER tools.</dd>
-            <dt>Format</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
-            <dt>Best for</dt>
-            <dd>Firms with a measured bottleneck and no vendor answer worth waiting for.</dd>
-            <dt>Duration</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
-          </dl>
-          <p class="tier__invest">Investment: <span class="ph">Dan to confirm</span></p>
-        </div>
-      </div>
-
-      <div class="tier">
-        <div class="tier__aside">
-          <span class="eyebrow eyebrow--accent">Alongside any stage</span>
-          <p class="tier__name" style="font-size:1.6rem">AEO</p>
-          <p class="dim" style="font-size:.9rem">SEO gets you found. AEO gets you quoted.</p>
-        </div>
-        <div>
-          <p><span class="ph">AEO offer name — Dan to confirm</span></p>
-          <p>Answer engine optimization: making your firm legible to the systems people now ask
-          instead of searching. Entity clarity, crawlable expertise, and the technical and content
-          changes that let an AI find, understand and cite you.</p>
-          <dl class="tier__spec">
-            <dt>Focus</dt>
-            <dd>Understanding AI search · the basic needs that make a site searchable by AI ·
-            becoming the proven expert AI systems find and cite · specific optimization approaches ·
-            evaluating OpenAsset and other AI marketing tools · AEO pipeline generation tooling.</dd>
-            <dt>Format</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
-            <dt>Best for</dt>
-            <dd>Firms whose expertise is real but invisible to answer engines.</dd>
-            <dt>Duration</dt>
-            <dd><span class="ph">Dan to confirm</span></dd>
-          </dl>
-          <p class="tier__invest">Investment: <span class="ph">Dan to confirm</span></p>
-          <p class="dim" style="font-size:.85rem">No ranking, citation, lead or pipeline outcome is
-          guaranteed. Answer engines change their behaviour without notice.</p>
-        </div>
-      </div>
+      <p class="bridge shell--narrow" style="padding-left:0; margin-top:var(--s6)">Most firms want to
+      start at Stage Three. Almost none of them should — the tools only pay off once the people around
+      them understand what they are looking at.</p>
     </div>
   </section>
 
@@ -524,10 +449,13 @@
         <h4>Site</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="responsible-use.html">Responsible Use</a></li>
-          <li><a href="results.html">The Results</a></li>
-          <li><a href="possibilities.html">See What's Possible</a></li>
           <li><a href="services.html">Services</a></li>
+          <li><a href="stage-understand.html">— Understand</a></li>
+          <li><a href="stage-adopt.html">— Adopt</a></li>
+          <li><a href="stage-build.html">— Build</a></li>
+          <li><a href="responsible-use.html">Responsible Use</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="possibilities.html">See What's Possible</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -549,6 +477,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=20260716b"></script>
+<script src="assets/js/site.js?v=20260716c"></script>
 </body>
 </html>

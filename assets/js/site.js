@@ -276,6 +276,57 @@
     compute();
   }
 
+  /* ----------------------------------------------------- nav dropdown */
+  /* Click/keyboard driven, not hover — hover menus are unusable on touch and
+     unreachable by keyboard. Opens on click, closes on Escape, outside click,
+     or blur out of the group. */
+  (function () {
+    var items = document.querySelectorAll('.nav__item');
+    if (!items.length) return;
+
+    function close(item) {
+      item.setAttribute('data-open', 'false');
+      var t = item.querySelector('.nav__trigger');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    }
+    function closeAll(except) {
+      items.forEach(function (i) { if (i !== except) close(i); });
+    }
+
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.nav__trigger');
+      var menu = item.querySelector('.nav__menu');
+      if (!trigger || !menu) return;
+
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        var open = item.getAttribute('data-open') === 'true';
+        closeAll(item);
+        item.setAttribute('data-open', String(!open));
+        trigger.setAttribute('aria-expanded', String(!open));
+      });
+
+      // Escape closes and returns focus to the trigger
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && item.getAttribute('data-open') === 'true') {
+          close(item);
+          trigger.focus();
+        }
+      });
+
+      // tabbing out of the group closes it
+      item.addEventListener('focusout', function (e) {
+        if (!item.contains(e.relatedTarget)) close(item);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      items.forEach(function (item) {
+        if (!item.contains(e.target)) close(item);
+      });
+    });
+  })();
+
   /* --------------------------------------------------------- videos */
   /* Click-to-load. The poster is a static thumbnail; no YouTube iframe (and so
      no YouTube request) exists until the visitor actually asks to watch.
