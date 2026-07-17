@@ -2042,13 +2042,6 @@ details.math[open] summary::before { content: "− "; }
   clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 
-.closer {
-  text-align: center;
-  padding-block: clamp(56px, 8vw, 112px);
-  border-top: 1px solid var(--rule);
-}
-.closer h2 { margin-bottom: var(--s4); max-width: 22ch; margin-inline: auto; }
-.closer .lead { margin-bottom: var(--s5); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
