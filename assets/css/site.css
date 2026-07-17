@@ -2278,3 +2278,60 @@ details.math[open] summary::before { content: "− "; }
   margin-bottom: var(--s2);
 }
 .scen-panel__body { font-size: .95rem; color: var(--ink-soft); margin: 0; max-width: var(--measure); }
+
+/* ------------------------------------------------------- expertise grid --- */
+/* The credentials were a flex-wrap strip with interpuncts. It broke across
+   lines at arbitrary points, left orphan separators, and read as a run-on.
+   A card grid aligns, and lets each claim stand as its own object. */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s3);
+  margin-top: var(--s6);
+}
+@media (max-width: 900px) { .exp-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .exp-grid { grid-template-columns: 1fr; } }
+.exp-card {
+  border: 1px solid var(--rule-soft);
+  border-top: 2px solid var(--accent);
+  border-radius: 5px;
+  background-color: var(--lifted);
+  padding: var(--s4);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.exp-card__n {
+  font-family: var(--display);
+  font-size: .8rem;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.exp-card__t {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.exp-card__s { font-size: .85rem; color: var(--ink-mute); margin: 0; }
+
+/* Where the work has been presented. Logos go here when Dan supplies them. */
+.logo-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--s3);
+  margin-top: var(--s5);
+  padding-top: var(--s5);
+  border-top: 1px solid var(--rule-soft);
+}
+.logo-slot {
+  aspect-ratio: 5 / 2;
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  display: grid; place-items: center;
+  text-align: center;
+  padding: var(--s2);
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--ink-mute);
+  background-color: var(--sunk);
+}
