@@ -633,17 +633,39 @@ section { padding-block: clamp(48px, 8vw, 112px); }
    fourth card alone on its own row — which is exactly the disconnected,
    spread-out look these pages had. Two columns keeps every stage balanced
    (4 cards = 2x2, 3 cards = 2+1 with the last spanning). */
-/* A trailing odd card used to span both columns and run its list horizontally,
-   to avoid an empty cell. That reads as a different component: the text runs
-   sideways while every other card reads down. An empty cell is the cheaper
-   cost, so cards stay uniform. */
-.scope-grid {
+/* One sheet per stage, not a 2x2 of boxes. The grid left ragged card heights,
+   floating empty cells, and a trailing odd card with nowhere to sit. A single
+   sheet with hairline dividers puts every heading and every list on the same
+   two columns, so the scope reads as one document. */
+.scope-sheet {
+  border: 1px solid var(--rule-soft);
+  border-top: 3px solid var(--stage, var(--accent));
+  border-radius: 5px;
+  overflow: hidden;
+  background:
+    linear-gradient(to bottom,
+      color-mix(in srgb, var(--stage, var(--accent)) 7%, transparent),
+      transparent 150px),
+    var(--lifted);
+}
+
+.scope-sheet .scope-card {
+  border: 0;
+  border-radius: 0;
+  background: none;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--s3);
-  /* start, not stretch: a 3-item card stretched to match a 6-item one just
-     grows a pool of empty space inside itself. Let each card be its own height. */
+  grid-template-columns: minmax(150px, 232px) 1fr;
+  gap: var(--s5);
   align-items: start;
+  padding: clamp(20px, 2.4vw, 30px);
+}
+
+.scope-sheet .scope-card + .scope-card { border-top: 1px solid var(--rule-soft); }
+
+.scope-sheet .scope-card > h2 { margin: 0; }
+
+@media (max-width: 720px) {
+  .scope-sheet .scope-card { grid-template-columns: 1fr; gap: var(--s3); }
 }
 /* An odd last card spans the full width rather than sitting half-empty. */
 @media (max-width: 780px) {
@@ -675,9 +697,7 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 .scope-card__lead {
   font-size: .92rem;
   color: var(--ink-soft);
-  margin-bottom: var(--s3);
-  padding-bottom: var(--s3);
-  border-bottom: 1px solid var(--rule-soft);
+  margin-bottom: var(--s4);
   max-width: none;
 }
 
@@ -1331,7 +1351,12 @@ figcaption {
 
 /* Framework cards. Must come AFTER .card — it sets `border` wholesale, which
    would otherwise clobber the stage border-top regardless of what we write. */
+/* Column + auto margin so the closing line sits on the card floor. The three
+   bodies are different lengths, so without this each kicker lands wherever its
+   paragraph happens to end and the row reads ragged. */
 .card--framework {
+  display: flex;
+  flex-direction: column;
   border-top: 3px solid var(--stage, var(--accent));
   background:
     linear-gradient(to bottom,
@@ -1345,6 +1370,8 @@ figcaption {
   margin-bottom: var(--s4);
 }
 .card--framework .eyebrow--stage { color: var(--stage, var(--accent)); }
+
+.card--framework > .dim:last-child { margin-top: auto; padding-top: var(--s4); }
 
 /* Full-strength ink, not the muted eyebrow grey. Reads white on dark grounds and
    near-black on light; never a literal #fff, which would vanish on the cream. */
