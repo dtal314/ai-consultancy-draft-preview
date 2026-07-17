@@ -697,6 +697,18 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   background: var(--stage, var(--accent));
 }
 .scope-card li strong { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; }
+/* Second-level bullets, as nested in the source outline */
+.scope-card li > ul {
+  margin-top: var(--s2);
+  gap: var(--s2);
+  padding-left: var(--s2);
+}
+.scope-card li > ul li { font-size: .88rem; color: var(--ink-mute); }
+.scope-card li > ul li::before {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--stage, var(--accent));
+  top: .62em; opacity: .7;
+}
 /* A card that is itself a sub-part of the one before it */
 .scope-card--sub { border-top-style: dashed; }
 .scope-card--sub .scope-card__n { opacity: .75; }
