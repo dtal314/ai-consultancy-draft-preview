@@ -668,30 +668,37 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   .scope-sheet .scope-card { grid-template-columns: 1fr; gap: var(--s3); }
 }
 
-/* Stage Three only, Dan's call. Three parts, three columns, heading over its
-   own list and a hairline between. The rows stretch so the dividers run the
-   full height rather than stopping at the shortest column. */
+/* Stage Three only, Dan's call: columns rather than heading-left rows. It ran
+   three across while the stage had exactly three parts; a fourth would have
+   stranded one alone in a second row, which is the orphan Dan already rejected
+   once. Two columns divide four evenly, so the count drives the column number.
+   Dividers are placed by position, not by sibling order: column two takes a
+   left edge, row two takes a top edge. `.scope-card + .scope-card` cannot
+   express that once the grid wraps, it would put a left edge on the first cell
+   of row two. */
 .scope-sheet--cols {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .scope-sheet--cols .scope-card {
   grid-template-columns: 1fr;
   gap: var(--s3);
+  border: 0;
 }
 
-.scope-sheet--cols .scope-card + .scope-card {
-  border-top: 0;
-  border-left: 1px solid var(--rule-soft);
-}
+/* The sheet's own `.scope-card + .scope-card` top rule matches every sibling and
+   ties this one on specificity, so it has to be cleared first or every cell in
+   row one after the first draws a stray divider. */
+.scope-sheet--cols .scope-card + .scope-card { border-top: 0; }
+
+.scope-sheet--cols .scope-card:nth-child(even) { border-left: 1px solid var(--rule-soft); }
+.scope-sheet--cols .scope-card:nth-child(n+3)  { border-top: 1px solid var(--rule-soft); }
 
 @media (max-width: 900px) {
   .scope-sheet--cols { grid-template-columns: 1fr; }
-  .scope-sheet--cols .scope-card + .scope-card {
-    border-left: 0;
-    border-top: 1px solid var(--rule-soft);
-  }
+  .scope-sheet--cols .scope-card:nth-child(even) { border-left: 0; }
+  .scope-sheet--cols .scope-card + .scope-card { border-top: 1px solid var(--rule-soft); }
 }
 .scope-card {
   border: 1px solid var(--rule-soft);
