@@ -667,10 +667,6 @@ section { padding-block: clamp(48px, 8vw, 112px); }
 @media (max-width: 720px) {
   .scope-sheet .scope-card { grid-template-columns: 1fr; gap: var(--s3); }
 }
-/* An odd last card spans the full width rather than sitting half-empty. */
-@media (max-width: 780px) {
-  .scope-grid { grid-template-columns: 1fr; }
-}
 .scope-card {
   border: 1px solid var(--rule-soft);
   border-top: 3px solid var(--stage, var(--accent));
