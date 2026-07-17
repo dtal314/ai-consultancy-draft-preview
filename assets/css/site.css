@@ -633,6 +633,10 @@ section { padding-block: clamp(48px, 8vw, 112px); }
    fourth card alone on its own row — which is exactly the disconnected,
    spread-out look these pages had. Two columns keeps every stage balanced
    (4 cards = 2x2, 3 cards = 2+1 with the last spanning). */
+/* A trailing odd card used to span both columns and run its list horizontally,
+   to avoid an empty cell. That reads as a different component: the text runs
+   sideways while every other card reads down. An empty cell is the cheaper
+   cost, so cards stay uniform. */
 .scope-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -642,16 +646,8 @@ section { padding-block: clamp(48px, 8vw, 112px); }
   align-items: start;
 }
 /* An odd last card spans the full width rather than sitting half-empty. */
-.scope-grid > .scope-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
-.scope-grid > .scope-card:last-child:nth-child(odd) ul {
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  display: grid;
-  gap: 11px var(--s5);
-}
 @media (max-width: 780px) {
   .scope-grid { grid-template-columns: 1fr; }
-  .scope-grid > .scope-card:last-child:nth-child(odd) { grid-column: auto; }
-  .scope-grid > .scope-card:last-child:nth-child(odd) ul { grid-template-columns: 1fr; }
 }
 .scope-card {
   border: 1px solid var(--rule-soft);
